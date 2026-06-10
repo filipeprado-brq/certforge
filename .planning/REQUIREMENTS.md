@@ -73,35 +73,35 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| APP-01 | TBD | Pending |
-| APP-02 | TBD | Pending |
-| APP-03 | TBD | Pending |
-| APP-04 | TBD | Pending |
-| APP-05 | TBD | Pending |
-| CONT-01 | TBD | Pending |
-| CONT-02 | TBD | Pending |
-| CONT-03 | TBD | Pending |
-| CONT-04 | TBD | Pending |
-| CONT-05 | TBD | Pending |
-| CONT-06 | TBD | Pending |
-| FLASH-01 | TBD | Pending |
-| FLASH-02 | TBD | Pending |
-| FLASH-03 | TBD | Pending |
-| FLASH-04 | TBD | Pending |
-| FLASH-05 | TBD | Pending |
-| QUIZ-01 | TBD | Pending |
-| QUIZ-02 | TBD | Pending |
-| QUIZ-03 | TBD | Pending |
-| QUIZ-04 | TBD | Pending |
-| QUIZ-05 | TBD | Pending |
-| QUIZ-06 | TBD | Pending |
-| QUIZ-07 | TBD | Pending |
+| APP-01 | Phase 1 | Pending |
+| APP-02 | Phase 1 | Pending |
+| APP-03 | Phase 1 | Pending |
+| APP-04 | Phase 1 | Pending |
+| APP-05 | Phase 1 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| CONT-05 | Phase 2 | Pending |
+| CONT-06 | Phase 2 | Pending |
+| FLASH-01 | Phase 3 | Pending |
+| FLASH-02 | Phase 3 | Pending |
+| FLASH-03 | Phase 3 | Pending |
+| FLASH-04 | Phase 3 | Pending |
+| FLASH-05 | Phase 3 | Pending |
+| QUIZ-01 | Phase 4 | Pending |
+| QUIZ-02 | Phase 4 | Pending |
+| QUIZ-03 | Phase 4 | Pending |
+| QUIZ-04 | Phase 4 | Pending |
+| QUIZ-05 | Phase 4 | Pending |
+| QUIZ-06 | Phase 4 | Pending |
+| QUIZ-07 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 23 total
-- Mapped to phases: 0 (roadmap pending)
-- Unmapped: 23 ⚠️
+- Mapped to phases: 23 (100%)
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-06-10*
-*Last updated: 2026-06-10 after initialization*
+*Last updated: 2026-06-10 after roadmap creation*
