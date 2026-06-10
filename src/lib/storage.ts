@@ -14,7 +14,7 @@ export interface PersistedState {
   schemaVersion: number
   themePref: ThemePref
   srs: Record<string, SrsCard>
-  // Later phases extend this (quiz history) — keep additive
+  // Later phases extend this (quiz history) — keep additive; readState applies DEFAULT_STATE so srs is always present in read values
 }
 
 const DEFAULT_STATE: PersistedState = {

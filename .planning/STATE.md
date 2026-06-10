@@ -4,13 +4,13 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Plan 02-03 complete — FlashcardsBrowse + QuizBrowse wired into routing, placeholders replaced
-last_updated: "2026-06-10T19:12:00.000Z"
+last_updated: "2026-06-10T23:10:28.665Z"
 progress:
   total_phases: 4
   completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
-  percent: 100
+  total_plans: 7
+  completed_plans: 6
+  percent: 86
 ---
 
 # Project State: Claude Architect Exam Trainer
@@ -20,22 +20,22 @@ progress:
 **Core value:** A candidate can study the exam's concepts via flashcards and take realistic, exam-style multiple-choice practice questions with explanations — entirely in the browser, offline.
 **Tech stack:** React + Vite + TypeScript, localStorage persistence, static build.
 **Mode:** mvp (vertical slices)
-**Current focus:** Phase 02 — exam-content
+**Current focus:** Phase 03 — flashcards-spaced-repetition
 
 ## Current Position
 
-Phase: 02 (exam-content) — COMPLETE
-Plan: 3 of 3
+Phase: 03 (flashcards-spaced-repetition) — EXECUTING
+Plan: 1 of 2
 **Phase:** 2 of 4 — Exam Content
 **Plan:** 02-03 complete; all Phase 2 plans done
-**Status:** Phase 02 complete; ready for Phase 03 (SRS) or Phase 04 (Quiz Engine)
-**Progress:** [██████████] 100%
+**Status:** Executing Phase 03
+**Progress:** [█████████░] 86%
 
 ## Performance Metrics
 
 - Phases complete: 0/4 (Phase 01 plans all done; phase-level complete after verifier)
-- Plans complete: 5 (01-01, 01-02, 02-01, 02-02, 02-03)
-- Requirements delivered: 10/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06)
+- Plans complete: 6 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01)
+- Requirements delivered: 13/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06, FLASH-02, FLASH-03, FLASH-05)
 
 ## Accumulated Context
 
@@ -60,6 +60,10 @@ Plan: 3 of 3
 - Card/question volume now meets per-domain minimums tracking exam weights: D1 13fc/11q, D2 9fc/7q, D3 10fc/8q, D4 10fc/8q, D5 8fc/6q (50 total flashcards, 40 total questions)
 - FlashcardsBrowse and QuizBrowse are read-only catalogs built from the typed content layer; SRS/quiz-engine interaction deferred to Phases 3/4
 - TDD applied to App routing task: RED commit (failing tests) then GREEN commit (App.tsx wired)
+- Leitner intervals [0,1,3,7,16] for boxes 1..5; Again→box1 due-today; Good→box+1(cap5) spaced out (FLASH-02)
+- Due-queue ordering locked: seen-due first (by dueAt ascending), unseen treated as +Infinity (last); test-guarded
+- learned = box >= 3 (spaced at least twice); srs field added additively to PersistedState with default {}; schemaVersion stays 1 (FLASH-03)
+- Now-injection pattern: scheduler functions (srs.ts, deckStats.ts) take `now: number`; no Date.now() inside pure logic
 
 ### Phase boundaries
 
@@ -76,9 +80,9 @@ Plan: 3 of 3
 
 ## Session Continuity
 
-**Last action:** Completed plan 02-03 (FlashcardsBrowse + QuizBrowse browse catalogs built from typed content layer, wired into App routing replacing Phase-1 placeholders; App tests updated; 49 tests pass; typecheck + build exit 0).
-**Stopped at:** Plan 02-03 complete — FlashcardsBrowse + QuizBrowse wired into routing, placeholders replaced
-**Next step:** Phase 03 (SRS study loop) or Phase 04 (Quiz Engine) — both unblocked by Phase 02
+**Last action:** Completed plan 03-01 (pure Leitner scheduler srs.ts + per-domain stats deckStats.ts + SRS persistence in storage.ts/useStoredState.ts; 78 tests pass; typecheck + build exit 0).
+**Stopped at:** Plan 03-01 complete — SRS core implemented; 03-02 (UI study loop) is next
+**Next step:** Phase 03 Plan 02 — Study session UI (DeckOverview + StudySession screens)
 
 ---
-*Last updated: 2026-06-10 after plan 02-03 execution*
+*Last updated: 2026-06-10 after plan 03-01 execution*

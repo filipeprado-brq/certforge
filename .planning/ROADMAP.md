@@ -60,7 +60,10 @@ Plans:
   3. Cards rated "again" resurface in a nearer interval and cards rated "good" space out, per a Leitner/SRS schedule that persists
   4. User can start a study session limited to cards due today, optionally filtered to a single domain
   5. User can see per-domain flashcard progress (cards learned and due counts)
-**Plans:** TBD
+**Plans:** 2 plans
+Plans:
+- [x] 03-01-PLAN.md — Pure now-injected Leitner scheduler (srs.ts) + per-domain deckStats + additive SRS persistence in cae-trainer:v1, fully unit-tested against the 03-CONTEXT acceptance hooks (TDD)
+- [ ] 03-02-PLAN.md — Deck Overview + Study Session study loop (flip, Again/Good rate→persist→advance, due queue, progress) + real per-domain Dashboard progress + Flashcards-route wiring (component-tested)
 **UI hint:** yes
 
 ### Phase 4: Quiz Engine & Modes
@@ -82,7 +85,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. App Shell & Persistence | 2/2 | Complete | 2026-06-10 |
 | 2. Exam Content | 3/3 | Complete   | 2026-06-10 |
-| 3. Flashcards & Spaced Repetition | 0/0 | Not started | - |
+| 3. Flashcards & Spaced Repetition | 0/2 | Planned | - |
 | 4. Quiz Engine & Modes | 0/0 | Not started | - |
 
 ## Coverage
@@ -99,4 +102,4 @@ Plans:
 | 4 | QUIZ-01, QUIZ-02, QUIZ-03, QUIZ-04, QUIZ-05, QUIZ-06, QUIZ-07 |
 
 ---
-*Last updated: 2026-06-10 after Phase 2 planning (02-01, 02-02, 02-03)*
+*Last updated: 2026-06-10 after Phase 3 planning (03-01, 03-02)*
