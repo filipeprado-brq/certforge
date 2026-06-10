@@ -8,7 +8,7 @@
 ## Phases
 
 - [x] **Phase 1: App Shell & Persistence** - Static React/Vite/TS app that runs, navigates, and remembers progress
-- [ ] **Phase 2: Exam Content** - Typed, embedded flashcard + question dataset authored from the official guide, browsable in-app
+- [x] **Phase 2: Exam Content** - Typed, embedded flashcard + question dataset authored from the official guide, browsable in-app (completed 2026-06-10)
 - [ ] **Phase 3: Flashcards & Spaced Repetition** - Full SRS-driven flashcard study loop with per-domain progress
 - [ ] **Phase 4: Quiz Engine & Modes** - Exam-style quiz engine with all 4 modes, results, and attempt history
 
@@ -42,11 +42,11 @@ Plans:
   3. The 12 sample questions from the official guide appear in the bank, tagged to their scenario and domain
   4. Card and question counts per domain visibly track the exam weights (D1 27%, D2 18%, D3 20%, D4 20%, D5 15%)
   5. All content loads from a typed, structured source embedded in the build (no network fetch)
-**Plans:** 2/3 plans executed
+**Plans:** 3/3 plans complete
 Plans:
 - [x] 02-01-PLAN.md — Typed content layer: types + scenarios + loader/selectors + seed port (15 flashcards, 14 questions) + the 12 official sample questions verbatim
 - [x] 02-02-PLAN.md — Expand deck + bank to per-domain weight-tracking minimums (50 flashcards, 40 questions)
-- [ ] 02-03-PLAN.md — Read-only browse catalogs replacing the Flashcards/Quiz placeholders, with domain/scenario filters and visible % of exam
+- [x] 02-03-PLAN.md — Read-only browse catalogs replacing the Flashcards/Quiz placeholders, with domain/scenario filters and visible % of exam
 **UI hint:** yes
 
 ### Phase 3: Flashcards & Spaced Repetition
@@ -81,7 +81,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. App Shell & Persistence | 2/2 | Complete | 2026-06-10 |
-| 2. Exam Content | 2/3 | In Progress|  |
+| 2. Exam Content | 3/3 | Complete   | 2026-06-10 |
 | 3. Flashcards & Spaced Repetition | 0/0 | Not started | - |
 | 4. Quiz Engine & Modes | 0/0 | Not started | - |
 
