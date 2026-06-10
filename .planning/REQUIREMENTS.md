@@ -9,9 +9,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### App Shell & Persistence
 
-- [ ] **APP-01**: App is a React + Vite + TypeScript project that builds to static assets deployable on any static host
+- [x] **APP-01**: App is a React + Vite + TypeScript project that builds to static assets deployable on any static host
 - [ ] **APP-02**: App has a home screen with navigation to Flashcards and Quiz modes
-- [ ] **APP-03**: All study state (SRS schedule, quiz history, scores) persists in browser localStorage and survives refresh
+- [x] **APP-03**: All study state (SRS schedule, quiz history, scores) persists in browser localStorage and survives refresh
 - [ ] **APP-04**: App is responsive and usable on desktop and mobile browser widths
 - [ ] **APP-05**: User can reset all local progress from the UI
 
@@ -73,9 +73,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| APP-01 | Phase 1 | Pending |
+| APP-01 | Phase 1 | Complete |
 | APP-02 | Phase 1 | Pending |
-| APP-03 | Phase 1 | Pending |
+| APP-03 | Phase 1 | Complete |
 | APP-04 | Phase 1 | Pending |
 | APP-05 | Phase 1 | Pending |
 | CONT-01 | Phase 2 | Pending |
