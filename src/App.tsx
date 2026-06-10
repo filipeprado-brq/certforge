@@ -5,6 +5,8 @@ import { AppShell } from './components/AppShell'
 import { Dashboard } from './screens/Dashboard'
 import { Settings } from './screens/Settings'
 import { Placeholder } from './screens/Placeholder'
+import { FlashcardsBrowse } from './screens/FlashcardsBrowse'
+import { QuizBrowse } from './screens/QuizBrowse'
 
 export type Route = 'home' | 'flashcards' | 'quiz' | 'history' | 'settings'
 
@@ -41,9 +43,9 @@ export function App() {
   if (route === 'home') {
     screen = <Dashboard onNav={setRoute} />
   } else if (route === 'flashcards') {
-    screen = <Placeholder title="Flashcards" />
+    screen = <FlashcardsBrowse />
   } else if (route === 'quiz') {
-    screen = <Placeholder title="Quiz" />
+    screen = <QuizBrowse />
   } else if (route === 'history') {
     screen = <Placeholder title="History" />
   } else if (route === 'settings') {
