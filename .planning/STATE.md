@@ -3,13 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-last_updated: "2026-06-10T13:45:00.000Z"
+stopped_at: Plan 02-01 complete — typed content data layer done
+last_updated: "2026-06-10T18:58:00Z"
 progress:
   total_phases: 4
-  completed_phases: 0
-  total_plans: 2
-  completed_plans: 2
-  percent: 100
+  completed_phases: 1
+  total_plans: 5
+  completed_plans: 3
+  percent: 60
 ---
 
 # Project State: Claude Architect Exam Trainer
@@ -19,22 +20,22 @@ progress:
 **Core value:** A candidate can study the exam's concepts via flashcards and take realistic, exam-style multiple-choice practice questions with explanations — entirely in the browser, offline.
 **Tech stack:** React + Vite + TypeScript, localStorage persistence, static build.
 **Mode:** mvp (vertical slices)
-**Current focus:** Phase 01 — app-shell-persistence
+**Current focus:** Phase 02 — exam-content
 
 ## Current Position
 
-Phase: 01 (app-shell-persistence) — COMPLETE
-Plan: 2 of 2 — COMPLETE
-**Phase:** 1 of 4 — App Shell & Persistence
-**Plan:** 01-01 complete; 01-02 complete
-**Status:** Phase 01 complete — ready for Phase 02 (Content)
-**Progress:** [#---] 0/4 phases complete (phase 01 plans done)
+Phase: 02 (exam-content) — EXECUTING
+Plan: 2 of 3
+**Phase:** 2 of 4 — Exam Content
+**Plan:** 02-01 complete; 02-02 next
+**Status:** Executing Phase 02
+**Progress:** [██████░░░░] 60%
 
 ## Performance Metrics
 
 - Phases complete: 0/4 (Phase 01 plans all done; phase-level complete after verifier)
-- Plans complete: 2
-- Requirements delivered: 4/23 (APP-02, APP-03, APP-04, APP-05)
+- Plans complete: 3 (01-01, 01-02, 02-01)
+- Requirements delivered: 9/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-06)
 
 ## Accumulated Context
 
@@ -53,6 +54,9 @@ Plan: 2 of 2 — COMPLETE
 - App exports named function App() for direct import in tests without default-export gymnastics
 - useResolvedTheme tracks matchMedia prefers-color-scheme with change listener for live system theme updates
 - Dashboard renders fresh/new-user state only (—/0% placeholders); Phase 2 wires real content counts
+- Typed content layer embedded as TS modules — no fetch/XHR (CONT-06) — types in src/data/types.ts, selectors in src/data/content.ts
+- @types/node added as devDependency to support node:fs/url/path in content.test.ts (CONT-06 grep gate)
+- content.test.ts uses fileURLToPath with process.cwd() fallback for jsdom URL compatibility
 
 ### Phase boundaries
 
@@ -69,9 +73,9 @@ Plan: 2 of 2 — COMPLETE
 
 ## Session Continuity
 
-**Last action:** Completed plan 01-02 (BRQ component library + AppShell + Dashboard + Settings + App root wiring).
-**Stopped at:** Phase 01 complete — all plans done
-**Next step:** Phase 02 (Content — flashcard deck + question bank authoring)
+**Last action:** Completed plan 02-01 (typed content data layer — 15 flashcards + 14 seed questions + 12 official sample questions + loader/selectors).
+**Stopped at:** Plan 02-01 complete — typed content data layer done
+**Next step:** Plan 02-02 (expand content to per-domain weight minimums)
 
 ---
 *Last updated: 2026-06-10 after plan 01-01 execution*

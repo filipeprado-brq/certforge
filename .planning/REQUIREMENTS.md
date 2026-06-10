@@ -17,12 +17,12 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Content
 
-- [ ] **CONT-01**: A flashcard dataset covers concepts across all 5 exam domains, with each card tagged by domain
-- [ ] **CONT-02**: A multiple-choice question bank covers the 5 domains, each question tagged by domain and (where applicable) scenario
-- [ ] **CONT-03**: Each question has exactly 1 correct answer, 3 distractors, and an explanation of why the answer is correct and others are wrong
-- [ ] **CONT-04**: The 12 sample questions from the official guide are included in the question bank, tagged to scenario/domain
+- [x] **CONT-01**: A flashcard dataset covers concepts across all 5 exam domains, with each card tagged by domain
+- [x] **CONT-02**: A multiple-choice question bank covers the 5 domains, each question tagged by domain and (where applicable) scenario
+- [x] **CONT-03**: Each question has exactly 1 correct answer, 3 distractors, and an explanation of why the answer is correct and others are wrong
+- [x] **CONT-04**: The 12 sample questions from the official guide are included in the question bank, tagged to scenario/domain
 - [ ] **CONT-05**: Card and question volume per domain roughly tracks the exam weights (D1 27%, D2 18%, D3 20%, D4 20%, D5 15%)
-- [ ] **CONT-06**: Content is stored in a typed, structured format (e.g. TS/JSON) embedded in the app build
+- [x] **CONT-06**: Content is stored in a typed, structured format (e.g. TS/JSON) embedded in the app build
 
 ### Flashcards (SRS)
 
@@ -78,12 +78,12 @@ Which phases cover which requirements. Updated during roadmap creation.
 | APP-03 | Phase 1 | Complete |
 | APP-04 | Phase 1 | Pending |
 | APP-05 | Phase 1 | Pending |
-| CONT-01 | Phase 2 | Pending |
-| CONT-02 | Phase 2 | Pending |
-| CONT-03 | Phase 2 | Pending |
-| CONT-04 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Complete |
+| CONT-02 | Phase 2 | Complete |
+| CONT-03 | Phase 2 | Complete |
+| CONT-04 | Phase 2 | Complete |
 | CONT-05 | Phase 2 | Pending |
-| CONT-06 | Phase 2 | Pending |
+| CONT-06 | Phase 2 | Complete |
 | FLASH-01 | Phase 3 | Pending |
 | FLASH-02 | Phase 3 | Pending |
 | FLASH-03 | Phase 3 | Pending |
