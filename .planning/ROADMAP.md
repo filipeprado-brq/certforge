@@ -9,7 +9,7 @@
 
 - [x] **Phase 1: App Shell & Persistence** - Static React/Vite/TS app that runs, navigates, and remembers progress
 - [x] **Phase 2: Exam Content** - Typed, embedded flashcard + question dataset authored from the official guide, browsable in-app (completed 2026-06-10)
-- [ ] **Phase 3: Flashcards & Spaced Repetition** - Full SRS-driven flashcard study loop with per-domain progress
+- [x] **Phase 3: Flashcards & Spaced Repetition** - Full SRS-driven flashcard study loop with per-domain progress (completed 2026-06-10)
 - [ ] **Phase 4: Quiz Engine & Modes** - Exam-style quiz engine with all 4 modes, results, and attempt history
 
 ## Phase Details
@@ -63,7 +63,7 @@ Plans:
 **Plans:** 2 plans
 Plans:
 - [x] 03-01-PLAN.md — Pure now-injected Leitner scheduler (srs.ts) + per-domain deckStats + additive SRS persistence in cae-trainer:v1, fully unit-tested against the 03-CONTEXT acceptance hooks (TDD)
-- [ ] 03-02-PLAN.md — Deck Overview + Study Session study loop (flip, Again/Good rate→persist→advance, due queue, progress) + real per-domain Dashboard progress + Flashcards-route wiring (component-tested)
+- [x] 03-02-PLAN.md — Deck Overview + Study Session study loop (flip, Again/Good rate→persist→advance, due queue, progress) + real per-domain Dashboard progress + Flashcards-route wiring (component-tested)
 **UI hint:** yes
 
 ### Phase 4: Quiz Engine & Modes
@@ -85,7 +85,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. App Shell & Persistence | 2/2 | Complete | 2026-06-10 |
 | 2. Exam Content | 3/3 | Complete   | 2026-06-10 |
-| 3. Flashcards & Spaced Repetition | 0/2 | Planned | - |
+| 3. Flashcards & Spaced Repetition | 2/2 | Complete | 2026-06-10 |
 | 4. Quiz Engine & Modes | 0/0 | Not started | - |
 
 ## Coverage
@@ -102,4 +102,4 @@ Plans:
 | 4 | QUIZ-01, QUIZ-02, QUIZ-03, QUIZ-04, QUIZ-05, QUIZ-06, QUIZ-07 |
 
 ---
-*Last updated: 2026-06-10 after Phase 3 planning (03-01, 03-02)*
+*Last updated: 2026-06-10 after Phase 3 plan 03-02 execution (study loop UI complete)*

@@ -26,10 +26,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Flashcards (SRS)
 
-- [ ] **FLASH-01**: User can flip through flashcards (prompt on front, concept/answer on back)
+- [x] **FLASH-01**: User can flip through flashcards (prompt on front, concept/answer on back)
 - [x] **FLASH-02**: User can rate recall on each card (e.g. again / good) to drive scheduling
 - [x] **FLASH-03**: Flashcards use a Leitner/SRS algorithm so missed cards resurface sooner and known cards space out
-- [ ] **FLASH-04**: User can start a study session limited to cards due today, optionally filtered by domain
+- [x] **FLASH-04**: User can start a study session limited to cards due today, optionally filtered by domain
 - [x] **FLASH-05**: User can see flashcard progress (cards learned, due count) per domain
 
 ### Quiz Engine & Modes
@@ -84,10 +84,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-04 | Phase 2 | Complete |
 | CONT-05 | Phase 2 | Complete |
 | CONT-06 | Phase 2 | Complete |
-| FLASH-01 | Phase 3 | Pending |
+| FLASH-01 | Phase 3 | Complete |
 | FLASH-02 | Phase 3 | Complete |
 | FLASH-03 | Phase 3 | Complete |
-| FLASH-04 | Phase 3 | Pending |
+| FLASH-04 | Phase 3 | Complete |
 | FLASH-05 | Phase 3 | Complete |
 | QUIZ-01 | Phase 4 | Pending |
 | QUIZ-02 | Phase 4 | Pending |
@@ -104,4 +104,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-06-10*
-*Last updated: 2026-06-10 after roadmap creation*
+*Last updated: 2026-06-10 after Phase 3 plan 03-02 execution (FLASH-01, FLASH-04 complete)*

@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Plan 02-03 complete — FlashcardsBrowse + QuizBrowse wired into routing, placeholders replaced
-last_updated: "2026-06-10T23:10:28.665Z"
+stopped_at: Plan 03-02 complete — study loop UI implemented; FlashcardsStudy + Dashboard wired
+last_updated: "2026-06-10T23:40:00.000Z"
 progress:
   total_phases: 4
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 7
-  completed_plans: 6
-  percent: 86
+  completed_plans: 7
+  percent: 100
 ---
 
 # Project State: Claude Architect Exam Trainer
@@ -25,7 +25,7 @@ progress:
 ## Current Position
 
 Phase: 03 (flashcards-spaced-repetition) — EXECUTING
-Plan: 1 of 2
+Plan: 2 of 2
 **Phase:** 2 of 4 — Exam Content
 **Plan:** 02-03 complete; all Phase 2 plans done
 **Status:** Executing Phase 03
@@ -34,8 +34,8 @@ Plan: 1 of 2
 ## Performance Metrics
 
 - Phases complete: 0/4 (Phase 01 plans all done; phase-level complete after verifier)
-- Plans complete: 6 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01)
-- Requirements delivered: 13/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06, FLASH-02, FLASH-03, FLASH-05)
+- Plans complete: 7 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02)
+- Requirements delivered: 17/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06, FLASH-01, FLASH-02, FLASH-03, FLASH-04, FLASH-05)
 
 ## Accumulated Context
 
@@ -64,6 +64,9 @@ Plan: 1 of 2
 - Due-queue ordering locked: seen-due first (by dueAt ascending), unseen treated as +Infinity (last); test-guarded
 - learned = box >= 3 (spaced at least twice); srs field added additively to PersistedState with default {}; schemaVersion stays 1 (FLASH-03)
 - Now-injection pattern: scheduler functions (srs.ts, deckStats.ts) take `now: number`; no Date.now() inside pure logic
+- FlashcardsStudy uses single-component view-gated design (deck/session state); queue captured once at session start via buildDueQueue
+- Dashboard mastery replaced with real SRS-derived deckStatsByDomain; stat-num shows due count (falls back to total)
+- Flashcards route now leads with study loop (FlashcardsStudy); FlashcardsBrowse kept in repo as unused file
 
 ### Phase boundaries
 
@@ -80,9 +83,9 @@ Plan: 1 of 2
 
 ## Session Continuity
 
-**Last action:** Completed plan 03-01 (pure Leitner scheduler srs.ts + per-domain stats deckStats.ts + SRS persistence in storage.ts/useStoredState.ts; 78 tests pass; typecheck + build exit 0).
-**Stopped at:** Plan 03-01 complete — SRS core implemented; 03-02 (UI study loop) is next
-**Next step:** Phase 03 Plan 02 — Study session UI (DeckOverview + StudySession screens)
+**Last action:** Completed plan 03-02 (FlashcardsStudy.tsx study loop UI + Dashboard real SRS mastery + component tests; 81 tests pass; typecheck + build exit 0).
+**Stopped at:** Plan 03-02 complete — study loop UI implemented; FlashcardsStudy + Dashboard wired
+**Next step:** Phase 04 — Quiz engine (or verifier for Phase 03)
 
 ---
 *Last updated: 2026-06-10 after plan 03-01 execution*
