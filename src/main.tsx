@@ -1,7 +1,6 @@
 import './styles/brq-tokens.css'
 import './styles/app.css'
 import ReactDOM from 'react-dom/client'
+import { App } from './App'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <div className="app-root" data-theme="light">Bootstrapping…</div>
-)
+ReactDOM.createRoot(document.getElementById('root')!).render(<App />)

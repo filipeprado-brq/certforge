@@ -34,7 +34,10 @@ beforeEach(() => {
 describe('App — initial render', () => {
   it('shows the Home dashboard with Study flashcards CTA on first load', () => {
     render(<App />)
-    expect(screen.getByText('Study flashcards')).toBeInTheDocument()
+    // Multiple "Study flashcards" buttons exist (entry card + empty state action)
+    const ctaBtns = screen.getAllByText('Study flashcards')
+    expect(ctaBtns.length).toBeGreaterThanOrEqual(1)
+    expect(ctaBtns[0]).toBeInTheDocument()
   })
 })
 
@@ -103,7 +106,7 @@ describe('App — reset', () => {
     fireEvent.click(settingsBtns[0])
 
     // Click the Reset button to open the dialog
-    const resetBtn = screen.getByRole('button', { name: /Reset…/ })
+    const resetBtn = screen.getByRole('button', { name: /reset/i })
     fireEvent.click(resetBtn)
 
     // Confirm reset
@@ -116,6 +119,7 @@ describe('App — reset', () => {
     expect(localStorage.getItem(STORAGE_KEY)).toBeNull()
 
     // App should be back on Home (Study flashcards should be visible)
-    expect(screen.getByText('Study flashcards')).toBeInTheDocument()
+    const homeBtns = screen.getAllByText('Study flashcards')
+    expect(homeBtns.length).toBeGreaterThanOrEqual(1)
   })
 })
