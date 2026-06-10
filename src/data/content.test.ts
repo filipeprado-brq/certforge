@@ -6,6 +6,8 @@
 
 import { describe, it, expect } from 'vitest'
 import { readFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 import { getFlashcards, getQuestions, flashcardCountsByDomain, questionCountsByDomain } from './content'
 
 // ---------------------------------------------------------------------------
@@ -140,16 +142,28 @@ describe('count maps', () => {
 // No fetch/XHR/axios/dynamic-import in data modules (CONT-06)
 // ---------------------------------------------------------------------------
 describe('no network/dynamic-import primitives in data modules', () => {
-  const dataFiles = [
-    new URL('./flashcards.ts', import.meta.url).pathname,
-    new URL('./questions.ts', import.meta.url).pathname,
-    new URL('./content.ts', import.meta.url).pathname,
-  ]
+  // Use fileURLToPath to get the real filesystem path from import.meta.url.
+  // In vitest with jsdom the URL may be http-based; fall back to process.cwd()
+  // resolution if the URL scheme is not 'file:'.
+  function resolveDataFile(name: string): string {
+    try {
+      const u = new URL(import.meta.url)
+      if (u.protocol === 'file:') {
+        const dir = dirname(fileURLToPath(import.meta.url))
+        return join(dir, name)
+      }
+    } catch {
+      // swallow — fall through to cwd approach
+    }
+    return join(process.cwd(), 'src', 'data', name)
+  }
 
+  const dataFileNames = ['flashcards.ts', 'questions.ts', 'content.ts']
   const forbidden = ['fetch(', 'XHR', 'axios', 'import(']
 
-  dataFiles.forEach(filePath => {
-    it(`${filePath.split('/').pop()} contains no network/dynamic-import primitives`, () => {
+  dataFileNames.forEach(name => {
+    it(`${name} contains no network/dynamic-import primitives`, () => {
+      const filePath = resolveDataFile(name)
       const src = readFileSync(filePath, 'utf-8')
       forbidden.forEach(pattern => {
         expect(src).not.toContain(pattern)
