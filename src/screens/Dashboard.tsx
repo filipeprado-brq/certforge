@@ -1,4 +1,7 @@
 import { DOMAINS } from '../data/domains'
+import { getFlashcards } from '../data/content'
+import { deckStatsByDomain } from '../lib/deckStats'
+import { useStoredState } from '../lib/useStoredState'
 import { Btn } from '../components/Btn'
 import { DomainBadge, WeightChip } from '../components/DomainBadge'
 import { ProgressBar } from '../components/ProgressBar'
@@ -11,7 +14,18 @@ interface DashboardProps {
 }
 
 export const Dashboard = ({ onNav }: DashboardProps) => {
-  const totalCards = DOMAINS.reduce((s) => s + 0, 0) // placeholder — Phase 2 wires content
+  const { srs } = useStoredState()
+  const cards = getFlashcards()
+  const stats = deckStatsByDomain(cards, srs, Date.now())
+  const totalCards = cards.length
+
+  // Total due across all domains
+  const totalDue = DOMAINS.reduce((sum, d) => sum + (stats[d.id]?.due ?? 0), 0)
+  // Total learned across all domains
+  const totalLearned = DOMAINS.reduce((sum, d) => sum + (stats[d.id]?.learned ?? 0), 0)
+
+  const flashcardStatNum = totalDue > 0 ? totalDue : totalCards
+  const flashcardStatLabel = totalDue > 0 ? 'cards due to study' : 'cards ready to learn'
 
   return (
     <div>
@@ -21,7 +35,7 @@ export const Dashboard = ({ onNav }: DashboardProps) => {
           Let&rsquo;s get you exam-ready.
         </h1>
         <p className="lead">
-          {`All ${totalCards || DOMAINS.length * 0} flashcards and the full question bank are loaded. Start anywhere — the trainer keeps score.`}
+          {`All ${totalCards} flashcards and the full question bank are loaded. Start anywhere — the trainer keeps score.`}
         </p>
       </div>
 
@@ -44,10 +58,10 @@ export const Dashboard = ({ onNav }: DashboardProps) => {
           </div>
           <div>
             <div className="stat-num t-display" style={{ fontSize: 72 }}>
-              —
+              {flashcardStatNum}
             </div>
             <div className="t-mono-sm t-subtle" style={{ marginTop: 6 }}>
-              cards ready to learn
+              {flashcardStatLabel}
             </div>
           </div>
           <div style={{ marginTop: 'auto' }}>
@@ -122,48 +136,53 @@ export const Dashboard = ({ onNav }: DashboardProps) => {
           <span className="t-mono t-subtle">Domain mastery</span>
           <span className="spacer" style={{ flex: 1 }}></span>
           <span className="t-mono-sm t-subtle">
-            No data yet — your first session will populate this
+            {totalLearned} / {totalCards} learned across all domains
           </span>
         </div>
         <div className="row-list">
-          {DOMAINS.map((d) => (
-            <div
-              key={d.id}
-              style={{
-                padding: 'var(--space-4) var(--space-6)',
-                display: 'grid',
-                gridTemplateColumns: '1fr auto',
-                gap: 'var(--space-2) var(--space-5)',
-                alignItems: 'center',
-              }}
-            >
+          {DOMAINS.map((d) => {
+            const s = stats[d.id] ?? { total: 0, learned: 0, due: 0 }
+            const pct = s.total ? (s.learned / s.total) * 100 : 0
+            return (
               <div
+                key={d.id}
                 style={{
-                  display: 'flex',
+                  padding: 'var(--space-4) var(--space-6)',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr auto',
+                  gap: 'var(--space-2) var(--space-5)',
                   alignItems: 'center',
-                  gap: 'var(--space-3)',
-                  flexWrap: 'wrap',
                 }}
               >
-                <DomainBadge domain={d} />
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 16.5 }}>
-                  {d.name}
-                </span>
-                <WeightChip domain={d} />
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--space-3)',
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  <DomainBadge domain={d} />
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: 16.5 }}>
+                    {d.name}
+                  </span>
+                  <WeightChip domain={d} />
+                </div>
+                <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <span className="t-mono-sm">{Math.round(pct)}%</span>
+                  <span className="t-mono-sm t-subtle">{s.due} due</span>
+                </div>
+                <div style={{ gridColumn: '1 / -1' }}>
+                  <ProgressBar
+                    value={pct}
+                    height={5}
+                    label={`${d.name} mastery`}
+                    color={d.id === 'd5' ? 'var(--d5)' : `var(--${d.id})`}
+                  />
+                </div>
               </div>
-              <span className="t-mono-sm" style={{ textAlign: 'right' }}>
-                0%
-              </span>
-              <div style={{ gridColumn: '1 / -1' }}>
-                <ProgressBar
-                  value={0}
-                  height={5}
-                  label={`${d.name} mastery`}
-                  color={d.id === 'd5' ? 'var(--d5)' : `var(--${d.id})`}
-                />
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 

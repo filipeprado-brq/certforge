@@ -42,7 +42,7 @@ describe('App — initial render', () => {
 })
 
 describe('App — navigation', () => {
-  it('switches to Flashcards browse catalog when Flashcards nav tab is clicked', () => {
+  it('switches to Flashcards study loop when Flashcards nav tab is clicked', () => {
     render(<App />)
     // Find the desktop nav tab (first one is in nav-tabs, second in bottom-nav)
     const flashcardsBtns = screen.getAllByRole('button', { name: 'Flashcards' })
@@ -50,8 +50,8 @@ describe('App — navigation', () => {
     // Flashcards tab should now have aria-current="page"
     const activeButtons = screen.getAllByRole('button', { name: 'Flashcards' })
     expect(activeButtons[0]).toHaveAttribute('aria-current', 'page')
-    // Content should show the browse catalog, NOT the placeholder
-    expect(screen.getByText('All')).toBeInTheDocument()
+    // Content should show the Deck Overview title "Card decks", NOT the placeholder
+    expect(screen.getByRole('heading', { name: /Card decks/i })).toBeInTheDocument()
     expect(screen.queryByText('Coming soon')).not.toBeInTheDocument()
   })
 
