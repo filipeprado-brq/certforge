@@ -78,3 +78,32 @@ describe('clearAll', () => {
     expect(state.themePref).toBe('system')
   })
 })
+
+// ─── SRS persistence tests (03-01 addition) ─────────────────────────────────
+
+describe('srs persistence', () => {
+  it('freshly-read state has srs deeply equal to {} (default applied by readState)', () => {
+    const state = readState()
+    expect(state.srs).toEqual({})
+  })
+
+  it('patchState with srs round-trips through cae-trainer:v1', () => {
+    patchState({ srs: { f1: { box: 2, dueAt: 123, lastRated: 100, rating: 'good' } } })
+    const state = readState()
+    expect(state.srs.f1.box).toBe(2)
+    expect(state.srs.f1.dueAt).toBe(123)
+    expect(state.srs.f1.lastRated).toBe(100)
+    expect(state.srs.f1.rating).toBe('good')
+  })
+
+  it('schemaVersion remains 1 after writing srs', () => {
+    patchState({ srs: { f1: { box: 3, dueAt: 999, lastRated: 500, rating: 'good' } } })
+    expect(readState().schemaVersion).toBe(1)
+  })
+
+  it('clearAll then readState().srs deeply equals {} — reset clears SRS', () => {
+    patchState({ srs: { f1: { box: 4, dueAt: 777, lastRated: 400, rating: 'good' } } })
+    clearAll()
+    expect(readState().srs).toEqual({})
+  })
+})

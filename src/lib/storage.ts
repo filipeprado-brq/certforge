@@ -3,6 +3,8 @@
 // Threat model: T-01-01 (tampering), T-01-02 (quota/denied) — see PLAN.md
 // =============================================================================
 
+import type { SrsCard } from './srs'
+
 export const STORAGE_KEY = 'cae-trainer:v1'
 export const SCHEMA_VERSION = 1
 
@@ -11,12 +13,14 @@ export type ThemePref = 'system' | 'light' | 'dark'
 export interface PersistedState {
   schemaVersion: number
   themePref: ThemePref
-  // Later phases extend this (SRS schedule, quiz history) — keep additive
+  srs: Record<string, SrsCard>
+  // Later phases extend this (quiz history) — keep additive
 }
 
 const DEFAULT_STATE: PersistedState = {
   schemaVersion: SCHEMA_VERSION,
   themePref: 'system',
+  srs: {},
 }
 
 /**
