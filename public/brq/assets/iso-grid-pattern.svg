@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
+  
+  <defs>
+    <pattern id="iso-grid" x="0" y="0" width="120" height="104" patternUnits="userSpaceOnUse">
+      
+      <path d="M 0 52 L 60 22 L 120 52 L 60 82 Z"></path>
+      <path d="M 0 52 L 0 104 L 60 134 L 60 82 Z"></path>
+      <path d="M 60 82 L 60 134 L 120 104 L 120 52 Z"></path>
+    </pattern>
+  </defs>
+  <rect width="800" height="400" fill="url(#iso-grid)" stroke="none"></rect>
+</svg>

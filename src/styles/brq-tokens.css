@@ -1,1 +1,292 @@
-/* placeholder — will be populated in Task 2 */
+/* ==========================================================================
+   BRQ Design System — Colors & Type Foundations
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Webfonts — local brand files (see public/brq/fonts/)
+   --------------------------------------------------------------------------
+   Aspekta 450 — display + titles. Only the 450 weight is licensed locally;
+     if another weight is needed, use Fontshare CDN as backup.
+   Inter Regular — body copy. (Additional weights via Google Fonts fallback.)
+   Geist Mono Regular + SemiBold — tags, labels, buttons, all-caps micro text.
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Aspekta';
+  src: url('/brq/fonts/Aspekta-450.ttf') format('truetype');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+/* Map 400/500 onto the 450 file so we always render the brand weight */
+@font-face {
+  font-family: 'Aspekta';
+  src: url('/brq/fonts/Aspekta-450.ttf') format('truetype');
+  font-weight: 400 550;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/brq/fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/brq/fonts/GeistMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/brq/fonts/GeistMono-SemiBold.ttf') format('truetype');
+  font-weight: 500 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* =========================================================
+     PRIMITIVE COLORS — never reference directly in product UI
+     ========================================================= */
+
+  /* Mono scale */
+  --brq-black:        #000000;
+  --brq-ink:          #1A1A1A;
+  --brq-gray-900:     #2A2A2A;
+  --brq-gray-800:     #4A4A4A;
+  --brq-gray-600:     #808080;
+  --brq-gray-400:     #B8B8B8;
+  --brq-gray-300:     #D9D9D9;
+  --brq-gray-200:     #EFEFEF;
+  --brq-gray-100:     #F5F5F5;
+  --brq-white:        #FFFFFF;
+
+  /* Secondary accents — use ONE per slide, never together dominant */
+  --brq-roxo:         #460E78; /* Soluções Digitais / Tech   */
+  --brq-verde:        #1DA669; /* Squads / Studio            */
+  --brq-laranja:      #EE7C38; /* Dados & Engenharia         */
+  --brq-azul:         #5A85CB; /* Cloud                      */
+
+  /* Tints / shades used in grafismos — same hue, lighter line */
+  --brq-roxo-400:     #7A3AB3;
+  --brq-verde-400:    #4FC68A;
+  --brq-laranja-400:  #F3A072;
+  --brq-azul-400:     #8AA8DC;
+
+  /* =========================================================
+     SEMANTIC — reference these in components
+     ========================================================= */
+
+  /* Surfaces */
+  --surface-ink:        var(--brq-black);     /* primary dark slide bg */
+  --surface-paper:      var(--brq-gray-200);  /* off-white slide bg    */
+  --surface-paper-pure: var(--brq-white);
+  --surface-raised:     var(--brq-gray-100);
+
+  /* Foreground */
+  --fg-on-ink:          var(--brq-white);
+  --fg-on-ink-muted:    var(--brq-gray-400);
+  --fg-on-ink-subtle:   var(--brq-gray-600);
+  --fg-on-paper:        var(--brq-black);
+  --fg-on-paper-muted:  var(--brq-gray-800);
+  --fg-on-paper-subtle: var(--brq-gray-600);
+
+  /* Hairlines / dividers (signature BRQ motif) */
+  --hairline-on-ink:    rgba(255, 255, 255, 0.18);
+  --hairline-on-paper:  rgba(0, 0, 0, 0.14);
+
+  /* =========================================================
+     TYPEFACES
+     ========================================================= */
+  --font-display: 'Aspekta', 'Inter', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-mono:    'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Font weights we actually use */
+  --fw-display:   450;  /* Aspekta medium — signature weight */
+  --fw-display-regular: 400;
+  --fw-body-light: 300;
+  --fw-body:       400;
+  --fw-body-med:   500;
+  --fw-mono:       600;  /* Geist Mono semibold for tags */
+
+  /* =========================================================
+     TYPE SCALE — 1920×1080 slide and product UIs
+     Slides lean large; web/UI lean smaller.
+     ========================================================= */
+
+  /* Display (hero on slides) — Aspekta 450 */
+  --type-display-xxl: 160px;    /* capas extremas */
+  --type-display-xl:  112px;    /* capa padrão */
+  --type-display-lg:  88px;
+  --type-display-md:  72px;
+  --type-display-sm:  56px;
+
+  /* Section titles */
+  --type-h1: 48px;
+  --type-h2: 36px;
+  --type-h3: 28px;
+  --type-h4: 22px;
+
+  /* Subtitle (Aspekta 400) */
+  --type-subtitle-lg: 40px;
+  --type-subtitle:    32px;
+  --type-subtitle-sm: 24px;
+
+  /* Body (Inter) */
+  --type-body-lg: 20px;
+  --type-body:    18px;
+  --type-body-sm: 16px;
+
+  /* Micro / mono (Geist Mono, always ALL CAPS, letter-spacing 0.04em) */
+  --type-mono-lg: 16px;
+  --type-mono:    13px;
+  --type-mono-sm: 11px;
+
+  /* Leading */
+  --lh-display: 1.0;      /* apertado, editorial */
+  --lh-title:   1.1;
+  --lh-body:    1.5;
+  --lh-mono:    1.2;
+
+  /* Letter-spacing */
+  --ls-display: -0.02em;  /* slight negative for big type */
+  --ls-body:     0em;
+  --ls-mono:     0.04em;  /* +4% for mono all caps */
+
+  /* =========================================================
+     LAYOUT TOKENS
+     ========================================================= */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* Radii — NEVER square corners on cards/buttons */
+  --radius-pill:   999px;
+  --radius-xl:     40px;  /* poster / story cards */
+  --radius-lg:     28px;
+  --radius-md:     20px;  /* tag pills minimum */
+  --radius-sm:     12px;
+  --radius-xs:     8px;
+
+  /* Hairline weight */
+  --hairline-weight: 1px;
+
+  /* Shadows — brand is flat. Use SPARINGLY. */
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-none: none;
+
+  /* Transitions */
+  --ease-out:  cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast:  120ms;
+  --t-base:  200ms;
+  --t-slow:  320ms;
+}
+
+/* ==========================================================================
+   SEMANTIC TYPE CLASSES — use these in JSX/HTML
+   ========================================================================== */
+
+.brq-display,
+.brq-h1,
+.brq-h2,
+.brq-h3,
+.brq-h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  margin: 0;
+  /* rule: Aspekta never ALL CAPS */
+  text-transform: none;
+}
+
+.brq-display { font-size: var(--type-display-xl); }
+.brq-display--xxl { font-size: var(--type-display-xxl); }
+.brq-display--lg  { font-size: var(--type-display-lg); }
+.brq-display--md  { font-size: var(--type-display-md); }
+.brq-display--sm  { font-size: var(--type-display-sm); }
+
+.brq-h1 { font-size: var(--type-h1); line-height: var(--lh-title); }
+.brq-h2 { font-size: var(--type-h2); line-height: var(--lh-title); }
+.brq-h3 { font-size: var(--type-h3); line-height: var(--lh-title); }
+.brq-h4 { font-size: var(--type-h4); line-height: var(--lh-title); }
+
+.brq-subtitle {
+  font-family: var(--font-display);
+  font-weight: var(--fw-display-regular);
+  font-size: var(--type-subtitle);
+  line-height: 1.15;
+  letter-spacing: var(--ls-display);
+  color: var(--fg-on-paper-muted);
+  margin: 0;
+}
+.brq-subtitle--lg { font-size: var(--type-subtitle-lg); }
+.brq-subtitle--sm { font-size: var(--type-subtitle-sm); }
+
+.brq-body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-body-light);
+  font-size: var(--type-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  max-width: 52ch;   /* BRQ rule: narrow body columns */
+  margin: 0;
+}
+.brq-body--lg { font-size: var(--type-body-lg); }
+.brq-body--sm { font-size: var(--type-body-sm); }
+.brq-body--medium { font-weight: var(--fw-body-med); }
+
+.brq-mono {
+  font-family: var(--font-mono);
+  font-weight: var(--fw-mono);
+  font-size: var(--type-mono);
+  line-height: var(--lh-mono);
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  margin: 0;
+}
+.brq-mono--lg { font-size: var(--type-mono-lg); }
+.brq-mono--sm { font-size: var(--type-mono-sm); }
+
+/* ==========================================================================
+   HAIRLINE — signature editorial divider
+   ========================================================================== */
+.brq-hairline {
+  display: block;
+  border: 0;
+  border-top: var(--hairline-weight) solid var(--hairline-on-paper);
+  margin: 0;
+}
+.brq-hairline--ink {
+  border-top-color: var(--hairline-on-ink);
+}
+
+/* ==========================================================================
+   BASE RESET (scoped — only applies when opt-in class on ancestor)
+   ========================================================================== */
+.brq-root {
+  font-family: var(--font-body);
+  color: var(--fg-on-paper);
+  background: var(--surface-paper-pure);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.brq-root--ink {
+  color: var(--fg-on-ink);
+  background: var(--surface-ink);
+}
