@@ -43,27 +43,27 @@ describe('readState', () => {
 
 describe('writeState + readState round-trip', () => {
   it('persists and reads back the themePref value', () => {
-    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'dark' })
+    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'dark', srs: {} })
     const state = readState()
     expect(state.themePref).toBe('dark')
   })
 
   it('round-trips the light theme', () => {
-    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'light' })
+    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'light', srs: {} })
     expect(readState().themePref).toBe('light')
   })
 })
 
 describe('patchState', () => {
   it('merges patch over existing state and persists', () => {
-    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'light' })
+    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'light', srs: {} })
     const result = patchState({ themePref: 'dark' })
     expect(result.themePref).toBe('dark')
     expect(readState().themePref).toBe('dark')
   })
 
   it('preserves unpatched fields', () => {
-    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'light' })
+    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'light', srs: {} })
     const result = patchState({ themePref: 'dark' })
     expect(result.schemaVersion).toBe(SCHEMA_VERSION)
   })
@@ -71,7 +71,7 @@ describe('patchState', () => {
 
 describe('clearAll', () => {
   it('removes the cae-trainer:v1 key; subsequent readState returns defaults', () => {
-    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'dark' })
+    writeState({ schemaVersion: SCHEMA_VERSION, themePref: 'dark', srs: {} })
     clearAll()
     expect(localStorage.getItem(STORAGE_KEY)).toBeNull()
     const state = readState()
