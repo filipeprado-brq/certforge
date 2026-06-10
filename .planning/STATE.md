@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Plan 02-01 complete — typed content data layer done
-last_updated: "2026-06-10T18:58:00Z"
+stopped_at: Plan 02-02 complete — deck expanded to 50 flashcards + 40 questions meeting per-domain minimums
+last_updated: "2026-06-10T19:05:00Z"
 progress:
   total_phases: 4
   completed_phases: 1
   total_plans: 5
-  completed_plans: 3
-  percent: 60
+  completed_plans: 4
+  percent: 80
 ---
 
 # Project State: Claude Architect Exam Trainer
@@ -27,15 +27,15 @@ progress:
 Phase: 02 (exam-content) — EXECUTING
 Plan: 2 of 3
 **Phase:** 2 of 4 — Exam Content
-**Plan:** 02-01 complete; 02-02 next
+**Plan:** 02-02 complete; 02-03 next
 **Status:** Executing Phase 02
-**Progress:** [██████░░░░] 60%
+**Progress:** [████████░░] 80%
 
 ## Performance Metrics
 
 - Phases complete: 0/4 (Phase 01 plans all done; phase-level complete after verifier)
-- Plans complete: 3 (01-01, 01-02, 02-01)
-- Requirements delivered: 9/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-06)
+- Plans complete: 4 (01-01, 01-02, 02-01, 02-02)
+- Requirements delivered: 10/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06)
 
 ## Accumulated Context
 
@@ -57,6 +57,7 @@ Plan: 2 of 3
 - Typed content layer embedded as TS modules — no fetch/XHR (CONT-06) — types in src/data/types.ts, selectors in src/data/content.ts
 - @types/node added as devDependency to support node:fs/url/path in content.test.ts (CONT-06 grep gate)
 - content.test.ts uses fileURLToPath with process.cwd() fallback for jsdom URL compatibility
+- Card/question volume now meets per-domain minimums tracking exam weights: D1 13fc/11q, D2 9fc/7q, D3 10fc/8q, D4 10fc/8q, D5 8fc/6q (50 total flashcards, 40 total questions)
 
 ### Phase boundaries
 
@@ -73,9 +74,9 @@ Plan: 2 of 3
 
 ## Session Continuity
 
-**Last action:** Completed plan 02-01 (typed content data layer — 15 flashcards + 14 seed questions + 12 official sample questions + loader/selectors).
-**Stopped at:** Plan 02-01 complete — typed content data layer done
-**Next step:** Plan 02-02 (expand content to per-domain weight minimums)
+**Last action:** Completed plan 02-02 (expanded flashcard deck to 50 cards and question bank to 40 questions meeting per-domain weight-tracking minimums; all tests, typecheck, and build pass).
+**Stopped at:** Plan 02-02 complete — deck expanded to 50 flashcards + 40 questions meeting per-domain minimums
+**Next step:** Plan 02-03 (browse views for flashcards and questions)
 
 ---
-*Last updated: 2026-06-10 after plan 01-01 execution*
+*Last updated: 2026-06-10 after plan 02-02 execution*

@@ -42,10 +42,10 @@ Plans:
   3. The 12 sample questions from the official guide appear in the bank, tagged to their scenario and domain
   4. Card and question counts per domain visibly track the exam weights (D1 27%, D2 18%, D3 20%, D4 20%, D5 15%)
   5. All content loads from a typed, structured source embedded in the build (no network fetch)
-**Plans:** 1/3 plans executed
+**Plans:** 2/3 plans executed
 Plans:
 - [x] 02-01-PLAN.md — Typed content layer: types + scenarios + loader/selectors + seed port (15 flashcards, 14 questions) + the 12 official sample questions verbatim
-- [ ] 02-02-PLAN.md — Expand deck + bank to per-domain weight-tracking minimums (≥50 flashcards, ≥40 questions)
+- [x] 02-02-PLAN.md — Expand deck + bank to per-domain weight-tracking minimums (50 flashcards, 40 questions)
 - [ ] 02-03-PLAN.md — Read-only browse catalogs replacing the Flashcards/Quiz placeholders, with domain/scenario filters and visible % of exam
 **UI hint:** yes
 
@@ -81,7 +81,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. App Shell & Persistence | 2/2 | Complete | 2026-06-10 |
-| 2. Exam Content | 1/3 | In Progress|  |
+| 2. Exam Content | 2/3 | In Progress|  |
 | 3. Flashcards & Spaced Repetition | 0/0 | Not started | - |
 | 4. Quiz Engine & Modes | 0/0 | Not started | - |
 
