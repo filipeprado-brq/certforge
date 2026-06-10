@@ -7,7 +7,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: App Shell & Persistence** - Static React/Vite/TS app that runs, navigates, and remembers progress
+- [x] **Phase 1: App Shell & Persistence** - Static React/Vite/TS app that runs, navigates, and remembers progress
 - [ ] **Phase 2: Exam Content** - Typed, embedded flashcard + question dataset authored from the official guide, browsable in-app
 - [ ] **Phase 3: Flashcards & Spaced Repetition** - Full SRS-driven flashcard study loop with per-domain progress
 - [ ] **Phase 4: Quiz Engine & Modes** - Exam-style quiz engine with all 4 modes, results, and attempt history
@@ -25,10 +25,10 @@
   3. State written to localStorage by the app survives a page refresh and browser restart
   4. The app layout is usable at both desktop and mobile browser widths
   5. User can reset all local progress from a control in the UI and see state cleared
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans executed
 Plans:
 - [x] 01-01-PLAN.md — Scaffold Vite+React+TS static build, port BRQ tokens/fonts/assets/CSS, namespaced versioned localStorage layer + domain metadata
-- [ ] 01-02-PLAN.md — BRQ AppShell + routing + system theming with persisted toggle, Home dashboard, Settings with Reset-all-progress, placeholder screens
+- [x] 01-02-PLAN.md — BRQ AppShell + routing + system theming with persisted toggle, Home dashboard, Settings with Reset-all-progress, placeholder screens
 **UI hint:** yes
 
 ### Phase 2: Exam Content
@@ -76,7 +76,7 @@ Plans:
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. App Shell & Persistence | 1/2 | In Progress|  |
+| 1. App Shell & Persistence | 2/2 | Complete | 2026-06-10 |
 | 2. Exam Content | 0/0 | Not started | - |
 | 3. Flashcards & Spaced Repetition | 0/0 | Not started | - |
 | 4. Quiz Engine & Modes | 0/0 | Not started | - |
@@ -95,4 +95,4 @@ Plans:
 | 4 | QUIZ-01, QUIZ-02, QUIZ-03, QUIZ-04, QUIZ-05, QUIZ-06, QUIZ-07 |
 
 ---
-*Last updated: 2026-06-10 after Phase 1 planning*
+*Last updated: 2026-06-10 after Phase 1 execution complete (01-01 + 01-02)*
