@@ -65,7 +65,7 @@ Plans:
   3. Cards rated "again" resurface in a nearer interval and cards rated "good" space out, per a Leitner/SRS schedule that persists
   4. User can start a study session limited to cards due today, optionally filtered to a single domain
   5. User can see per-domain flashcard progress (cards learned and due counts)
-**Plans:** 2 plans
+**Plans:** 2/2 plans
 Plans:
 - [x] 03-01-PLAN.md — Pure now-injected Leitner scheduler (srs.ts) + per-domain deckStats + additive SRS persistence in cae-trainer:v1, fully unit-tested against the 03-CONTEXT acceptance hooks (TDD)
 - [x] 03-02-PLAN.md — Deck Overview + Study Session study loop (flip, Again/Good rate→persist→advance, due queue, progress) + real per-domain Dashboard progress + Flashcards-route wiring (component-tested)
@@ -100,7 +100,12 @@ Plans:
   2. Every exam-guide task statement 1.1–5.6 is covered by at least one flashcard on its core concept (verifiable via task-statement coverage)
   3. All new cards load from the existing typed source embedded in the build (no network fetch) and appear in the SRS study session and the per-domain progress view without code changes to the study loop
   4. The flashcard-related minimums and per-domain assertions in content.test.ts are updated and green for the expanded deck
-**Plans:** TBD
+**Plans:** 4 plans
+Plans:
+- [ ] 05-01-PLAN.md — Add optional `taskRef` to the Flashcard type; raise content.test.ts to ≥150 + new per-domain mins + add the 30-statement TASK_STATEMENTS coverage gate (RED before authoring)
+- [ ] 05-02-PLAN.md — Author +27 D1 (f51-f77) and +18 D2 (f78-f95) cards with taskRefs covering all of 1.1-1.7 and 2.1-2.5
+- [ ] 05-03-PLAN.md — Author +20 D3 (f96-f115) and +20 D4 (f116-f135) cards with taskRefs covering all of 3.1-3.6 and 4.1-4.6
+- [ ] 05-04-PLAN.md — Author +15 D5 (f136-f150) cards covering 5.1-5.6, cross ≥150 total, backfill taskRef gaps onto f1-f50, full suite green
 
 ### Phase 6: Question Bank Expansion
 **Goal:** The candidate has a deeper, exam-realistic question bank — grown from ~40 to ≥120 questions — with strong per-scenario pools, code/config-snippet questions, and harder tradeoff-style distractors, with the full content test suite (new minimums + coverage/scenario assertions + preserved invariants) green.
@@ -123,7 +128,7 @@ Plans:
 | 2. Exam Content | 3/3 | Complete   | 2026-06-10 |
 | 3. Flashcards & Spaced Repetition | 2/2 | Complete | 2026-06-10 |
 | 4. Quiz Engine & Modes | 3/3 | Complete   | 2026-06-11 |
-| 5. Flashcard Bank Expansion | 0/? | Not started | - |
+| 5. Flashcard Bank Expansion | 0/4 | Planned | - |
 | 6. Question Bank Expansion | 0/? | Not started | - |
 
 ## Coverage
@@ -141,4 +146,4 @@ Plans:
 | 6 | EXP-02, EXP-04, EXP-05, EXP-06, EXP-07 |
 
 ---
-*Last updated: 2026-06-11 after v1.1 Content Expansion roadmap (phases 5–6 appended)*
+*Last updated: 2026-06-11 after planning Phase 5 (4 plans, 4 waves)*
