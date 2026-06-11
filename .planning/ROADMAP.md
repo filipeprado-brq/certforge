@@ -10,7 +10,7 @@
 - [x] **Phase 1: App Shell & Persistence** - Static React/Vite/TS app that runs, navigates, and remembers progress
 - [x] **Phase 2: Exam Content** - Typed, embedded flashcard + question dataset authored from the official guide, browsable in-app (completed 2026-06-10)
 - [x] **Phase 3: Flashcards & Spaced Repetition** - Full SRS-driven flashcard study loop with per-domain progress (completed 2026-06-10)
-- [ ] **Phase 4: Quiz Engine & Modes** - Exam-style quiz engine with all 4 modes, results, and attempt history
+- [x] **Phase 4: Quiz Engine & Modes** - Exam-style quiz engine with all 4 modes, results, and attempt history (completed 2026-06-11)
 
 ## Phase Details
 
@@ -76,11 +76,11 @@ Plans:
   2. User can run scenario simulation (4 of the 6 scenarios drawn at random, questions grouped by scenario), per-domain practice (filtered to a chosen domain), timed full-exam (countdown timer with a final scaled score 100–1000 and pass/fail at 720), and free/random (N random questions with explanation after each)
   3. After any quiz, user sees a results summary with score, per-domain breakdown, and a review of missed questions
   4. User can open a history view showing past quiz attempts and their scores
-**Plans:** 3 plans
+**Plans:** 3/3 plans complete
 Plans:
 - [x] 04-01-PLAN.md — Pure injected quiz engine (scaledScore/isPass/gradeAttempt/selectQuestions/timer, rng+now injected, no Math.random/Date.now) + additive quizHistory persistence, fully unit-tested vs the 04-CONTEXT acceptance hooks (TDD)
 - [x] 04-02-PLAN.md — Port BRQ ScoreDial/DomainBars/PassChip/Timer to TSX + ModeSelect (4 modes/config) + QuizRunner (non-timed reveal+explanation vs timed defer/countdown/auto-submit, scenario banner)
-- [ ] 04-03-PLAN.md — QuizResults (timed ScoreDial+PassChip / raw %, DomainBars, missed review) + QuizFlow wiring + HistoryScreen (record+view attempts) + Quiz/History route swap + App.test Quiz/History assertion updates
+- [x] 04-03-PLAN.md — QuizResults (timed ScoreDial+PassChip / raw %, DomainBars, missed review) + QuizFlow wiring + HistoryScreen (record+view attempts) + Quiz/History route swap + App.test Quiz/History assertion updates
 **UI hint:** yes
 
 ## Progress
@@ -90,7 +90,7 @@ Plans:
 | 1. App Shell & Persistence | 2/2 | Complete | 2026-06-10 |
 | 2. Exam Content | 3/3 | Complete   | 2026-06-10 |
 | 3. Flashcards & Spaced Repetition | 2/2 | Complete | 2026-06-10 |
-| 4. Quiz Engine & Modes | 2/3 | In Progress | - |
+| 4. Quiz Engine & Modes | 3/3 | Complete   | 2026-06-11 |
 
 ## Coverage
 

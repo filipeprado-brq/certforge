@@ -39,8 +39,8 @@ Requirements for initial release. Each maps to roadmap phases.
 - [ ] **QUIZ-03**: Per-domain practice mode — user picks a domain and answers questions filtered to it
 - [ ] **QUIZ-04**: Timed full-exam mode — full simulation with a countdown timer and a final scaled score (100–1000, pass mark 720 shown as pass/fail)
 - [ ] **QUIZ-05**: Free/random mode — user picks N questions drawn at random, with explanation shown after each answer
-- [ ] **QUIZ-06**: After a quiz, user sees a results summary (score, per-domain breakdown, review of missed questions)
-- [ ] **QUIZ-07**: Quiz attempt history is recorded and viewable
+- [x] **QUIZ-06**: After a quiz, user sees a results summary (score, per-domain breakdown, review of missed questions)
+- [x] **QUIZ-07**: Quiz attempt history is recorded and viewable
 
 ## v2 Requirements
 
@@ -94,8 +94,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUIZ-03 | Phase 4 | Pending |
 | QUIZ-04 | Phase 4 | Pending |
 | QUIZ-05 | Phase 4 | Pending |
-| QUIZ-06 | Phase 4 | Pending |
-| QUIZ-07 | Phase 4 | Pending |
+| QUIZ-06 | Phase 4 | Complete |
+| QUIZ-07 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total

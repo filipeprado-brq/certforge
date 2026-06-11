@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Plan 04-02 complete — quiz UI components (ModeSelect/QuizRunner/QuizParts) built
-last_updated: "2026-06-11T09:26:00.000Z"
+stopped_at: Plan 04-03 complete — QuizResults + QuizFlow + HistoryScreen; full v1 roadmap complete
+last_updated: "2026-06-11T12:50:00.000Z"
 progress:
   total_phases: 4
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 10
   completed_plans: 10
-  percent: 95
+  percent: 100
 ---
 
 # Project State: Claude Architect Exam Trainer
@@ -24,18 +24,18 @@ progress:
 
 ## Current Position
 
-Phase: 04 (quiz-engine-modes) — EXECUTING
-Plan: 2 of 3
+Phase: 04 (quiz-engine-modes) — COMPLETE
+Plan: 3 of 3
 **Phase:** 4 of 4 — Quiz Engine & Modes
-**Plan:** 04-02 complete; quiz UI — ModeSelect + QuizRunner + QuizParts components
-**Status:** Executing Phase 04
-**Progress:** [█████████░] 90%
+**Plan:** 04-03 complete; QuizResults + QuizFlow + HistoryScreen; full v1 roadmap complete
+**Status:** All phases complete
+**Progress:** [██████████] 100%
 
 ## Performance Metrics
 
 - Phases complete: 0/4 (Phase 01 plans all done; phase-level complete after verifier)
-- Plans complete: 9 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 04-01, 04-02)
-- Requirements delivered: 23/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06, FLASH-01, FLASH-02, FLASH-03, FLASH-04, FLASH-05, QUIZ-01, QUIZ-02, QUIZ-03, QUIZ-04, QUIZ-05, QUIZ-07)
+- Plans complete: 10 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 04-01, 04-02, 04-03)
+- Requirements delivered: 23/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06, FLASH-01, FLASH-02, FLASH-03, FLASH-04, FLASH-05, QUIZ-01, QUIZ-02, QUIZ-03, QUIZ-04, QUIZ-05, QUIZ-06, QUIZ-07)
 
 ## Accumulated Context
 
@@ -75,6 +75,10 @@ Plan: 2 of 3
 - Math.random injected into selectQuestions exactly once in QuizRunner useMemo — engine stays pure (rng-injection-at-ui-boundary pattern)
 - Timed countdown: useEffect interval sets nowMs=Date.now(); remainingSeconds/isExpired called with nowMs (now-injection-at-ui-boundary)
 - finishedRef guard ensures onFinish fires exactly once whether via Next button or timer expiry
+- QuizResults exports QuizResultView so both QuizFlow and HistoryScreen build it without coupling to the runner
+- perDomain shape conversion done in QuizFlow (at finish) and HistoryScreen (stored flat map re-wrapped as {pct} objects)
+- HistoryScreen rebuilds missed Question[] from getQuestions() by id; unknown ids skipped gracefully (no crash)
+- Quiz route wired as QuizFlow (ModeSelect→QuizRunner→QuizResults); History route wired as HistoryScreen
 
 ### Phase boundaries
 
@@ -91,9 +95,9 @@ Plan: 2 of 3
 
 ## Session Continuity
 
-**Last action:** Completed plan 04-02 (quiz UI — ModeSelect + QuizRunner + QuizParts; 156 tests pass; typecheck + build exit 0; engine purity gate passes).
-**Stopped at:** Plan 04-02 complete — quiz UI components (ModeSelect/QuizRunner/QuizParts) built
-**Next step:** Phase 04 Plan 03 — QuizResults + History screens, route wiring, App.test.tsx updates
+**Last action:** Completed plan 04-03 (QuizResults + QuizFlow + HistoryScreen; 190 tests pass; typecheck + build exit 0). All v1 phases complete.
+**Stopped at:** Plan 04-03 complete — QuizResults + QuizFlow + HistoryScreen; full v1 roadmap complete
+**Next step:** None — all 23 v1 requirements delivered
 
 ---
 *Last updated: 2026-06-10 after plan 03-01 execution*
