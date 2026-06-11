@@ -26,6 +26,10 @@
   text-rendering: optimizeLegibility;
 }
 
+body{
+  margin: 0;
+  padding: 0;
+}
 .app-root[data-theme="light"] {
   --bg: var(--brq-gray-200);
   --surface: var(--brq-white);
