@@ -6,8 +6,12 @@ import {
   gradeAttempt,
   remainingSeconds,
   isExpired,
+  selectQuestions,
+  FREE_MIN,
+  FREE_MAX,
 } from './quiz'
 import type { Question } from '../data/types'
+import { getQuestions } from '../data/content'
 
 // ─── Inline Question fixtures ────────────────────────────────────────────────
 
@@ -193,5 +197,134 @@ describe('isExpired', () => {
 
   it('isExpired(S, 600, S) === false (no time elapsed)', () => {
     expect(isExpired(S, 600, S)).toBe(false)
+  })
+})
+
+// ─── selectQuestions ──────────────────────────────────────────────────────────
+
+/**
+ * Deterministic rng helper: linear sequence cycling through fixed values.
+ * Returns values from [0,1) deterministically so test outcomes are stable.
+ */
+function makeSeqRng(seq: number[]): () => number {
+  let i = 0
+  return () => seq[i++ % seq.length]
+}
+
+const SEQ_RNG = makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85, 0.05, 0.55])
+
+describe('selectQuestions — constants', () => {
+  it('FREE_MIN === 5', () => {
+    expect(FREE_MIN).toBe(5)
+  })
+
+  it('FREE_MAX === 15', () => {
+    expect(FREE_MAX).toBe(15)
+  })
+})
+
+describe('selectQuestions — scenario mode', () => {
+  const pool = getQuestions()
+
+  it('returns questions from exactly 4 distinct scenarios', () => {
+    const result = selectQuestions('scenario', {}, pool, makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5]))
+    const scenarios = new Set(result.map(q => q.scenario))
+    expect(scenarios.size).toBe(4)
+  })
+
+  it('questions are grouped by scenario (all of scenario A then all of B, etc.)', () => {
+    const result = selectQuestions('scenario', {}, pool, makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5]))
+    // Check grouping: no scenario appears, disappears, then re-appears
+    let lastScenario: string | undefined = undefined
+    const seenScenarios = new Set<string>()
+    for (const q of result) {
+      if (q.scenario !== lastScenario) {
+        expect(seenScenarios.has(q.scenario!)).toBe(false) // scenario should not repeat
+        if (lastScenario !== undefined) {
+          seenScenarios.add(lastScenario)
+        }
+        lastScenario = q.scenario
+      }
+    }
+  })
+
+  it('is deterministic: same rng sequence → same result', () => {
+    const rng1 = makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5])
+    const rng2 = makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5])
+    const result1 = selectQuestions('scenario', {}, pool, rng1)
+    const result2 = selectQuestions('scenario', {}, pool, rng2)
+    expect(result1.map(q => q.id)).toEqual(result2.map(q => q.id))
+  })
+})
+
+describe('selectQuestions — domain mode', () => {
+  const pool = getQuestions()
+
+  it("returns only d2 questions when opts={domain:'d2'}", () => {
+    const result = selectQuestions('domain', { domain: 'd2' }, pool, SEQ_RNG)
+    expect(result.length).toBeGreaterThan(0)
+    expect(result.every(q => q.domain === 'd2')).toBe(true)
+  })
+
+  it('returns all pool questions for the chosen domain (no filtering beyond domain)', () => {
+    const expected = pool.filter(q => q.domain === 'd2')
+    const result = selectQuestions('domain', { domain: 'd2' }, pool, SEQ_RNG)
+    expect(result.length).toBe(expected.length)
+  })
+})
+
+describe('selectQuestions — timed mode', () => {
+  const pool = getQuestions()
+
+  it('returns exactly 10 questions', () => {
+    const result = selectQuestions('timed', {}, pool, makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85]))
+    expect(result.length).toBe(10)
+  })
+
+  it('ignores opts.n — always returns 10 even if n is provided', () => {
+    const result = selectQuestions('timed', { n: 5 }, pool, makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85]))
+    expect(result.length).toBe(10)
+  })
+
+  it('is deterministic: same rng → same 10 questions', () => {
+    const rng1 = makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85])
+    const rng2 = makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85])
+    const result1 = selectQuestions('timed', {}, pool, rng1)
+    const result2 = selectQuestions('timed', {}, pool, rng2)
+    expect(result1.map(q => q.id)).toEqual(result2.map(q => q.id))
+  })
+})
+
+describe('selectQuestions — free mode', () => {
+  const pool = getQuestions() // 40 questions
+
+  it('free with n:7 returns exactly 7 questions', () => {
+    const result = selectQuestions('free', { n: 7 }, pool, makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3]))
+    expect(result.length).toBe(7)
+  })
+
+  it('free with n:100 (>FREE_MAX=15) clamps to 15', () => {
+    const result = selectQuestions('free', { n: 100 }, pool, makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85, 0.05, 0.55, 0.25, 0.75, 0.35]))
+    expect(result.length).toBe(Math.min(FREE_MAX, pool.length))
+    expect(result.length).toBe(15)
+  })
+
+  it('free with n:1 (<FREE_MIN=5) clamps to 5', () => {
+    const result = selectQuestions('free', { n: 1 }, pool, makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9]))
+    expect(result.length).toBe(Math.min(FREE_MIN, pool.length))
+    expect(result.length).toBe(5)
+  })
+
+  it('free with n:undefined defaults to 10', () => {
+    const result = selectQuestions('free', {}, pool, makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85]))
+    expect(result.length).toBe(10)
+  })
+
+  it('is deterministic: same rng → same questions', () => {
+    const rng1 = makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85])
+    const rng2 = makeSeqRng([0.1, 0.4, 0.7, 0.2, 0.9, 0.5, 0.3, 0.6, 0.15, 0.85])
+    const result1 = selectQuestions('free', { n: 10 }, pool, rng1)
+    const result2 = selectQuestions('free', { n: 10 }, pool, rng2)
+    expect(result1.map(q => q.id)).toEqual(result2.map(q => q.id))
   })
 })
