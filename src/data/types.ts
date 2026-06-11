@@ -19,6 +19,7 @@ export interface Flashcard {
   domain: DomainId
   front: string
   back: string
+  taskRef?: string        // exam task statement, e.g. '1.3' | '4.5'
 }
 
 export interface Question {
