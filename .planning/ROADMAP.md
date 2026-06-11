@@ -118,10 +118,10 @@ Plans:
   3. At least 15 questions include a code/config snippet (CLAUDE.md, .mcp.json, tool_choice, hooks, CLI -p/--output-format json/--json-schema, JSON Schema)
   4. Every new question is exam-style — exactly 1 correct + 3 plausible distractors — with substantive whyCorrect and whyOthers explanations grounded in the guide
   5. content.test.ts enforces the new minimums plus coverage/scenario assertions while preserving the invariants (official-sample === 12, 4-option shape, unique ids, no network fetch), and typecheck + build + tests are all green
-**Plans:** 1/4 plans executed
+**Plans:** 2/4 plans executed
 Plans:
 - [x] 06-01-PLAN.md — Add optional hasSnippet to Question type + raise content.test.ts to >=120 / per-domain mins / each scenario >=8 / hasSnippet >=15 (TDD RED gate)
-- [ ] 06-02-PLAN.md — Author +23 D1 (q29-q51) and +16 D2 (q52-q67); Customer Support +2, Dev Productivity +3, >=6 snippet questions
+- [x] 06-02-PLAN.md — Author +23 D1 (q29-q51) and +16 D2 (q52-q67); Customer Support +2, Dev Productivity +3, >=6 snippet questions
 - [ ] 06-03-PLAN.md — Author +17 D3 (q68-q84) and +17 D4 (q85-q101); Code Gen +3, CI +4, Dev Productivity +3, >=6 more snippets
 - [ ] 06-04-PLAN.md — Author +13 D5 (q102-q114) + Structured Data +4; close out: all 6 scenarios >=8, >=15 snippets, full suite green
 
@@ -134,7 +134,7 @@ Plans:
 | 3. Flashcards & Spaced Repetition | 2/2 | Complete | 2026-06-10 |
 | 4. Quiz Engine & Modes | 3/3 | Complete   | 2026-06-11 |
 | 5. Flashcard Bank Expansion | 4/4 | Complete   | 2026-06-11 |
-| 6. Question Bank Expansion | 1/4 | In Progress|  |
+| 6. Question Bank Expansion | 2/4 | In Progress|  |
 
 ## Coverage
 

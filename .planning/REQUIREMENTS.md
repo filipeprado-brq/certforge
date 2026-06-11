@@ -48,11 +48,11 @@ The active milestone. Content-only — no new app features. Targets are proporti
 (D1 27% / D2 18% / D3 20% / D4 20% / D5 15%). Reuses the existing typed content layer (`src/data/*`).
 
 - [x] **EXP-01**: Flashcard bank expanded to ≥150 total, weight-proportional (≥ D1 40, D2 27, D3 30, D4 30, D5 23), each domain-tagged
-- [ ] **EXP-02**: Question bank expanded to ≥120 total, weight-proportional (≥ D1 32, D2 22, D3 24, D4 24, D5 18); the 12 official sample questions preserved unchanged
+- [x] **EXP-02**: Question bank expanded to ≥120 total, weight-proportional (≥ D1 32, D2 22, D3 24, D4 24, D5 18); the 12 official sample questions preserved unchanged
 - [x] **EXP-03**: Every exam-guide task statement (1.1–5.6) is covered by ≥1 flashcard on its core concept
-- [ ] **EXP-04**: Each of the 6 official scenarios has ≥8 scenario-tagged questions (strong Scenario Simulation pool)
+- [x] **EXP-04**: Each of the 6 official scenarios has ≥8 scenario-tagged questions (strong Scenario Simulation pool)
 - [x] **EXP-05**: ≥15 questions include a code/config snippet (CLAUDE.md, .mcp.json, tool_choice, hooks, CLI -p/--output-format json/--json-schema, JSON Schema)
-- [ ] **EXP-06**: All new questions are exam-style — exactly 1 correct + 3 plausible distractors, with substantive whyCorrect + whyOthers grounded in the guide
+- [x] **EXP-06**: All new questions are exam-style — exactly 1 correct + 3 plausible distractors, with substantive whyCorrect + whyOthers grounded in the guide
 - [x] **EXP-07**: content.test.ts updated with the new minimums + coverage/scenario assertions; invariants preserved (official-sample === 12, 4-option shape, unique ids, no network fetch); typecheck + build + tests green
 
 ### v1.1 Traceability
@@ -60,11 +60,11 @@ The active milestone. Content-only — no new app features. Targets are proporti
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | EXP-01 | Phase 5 | Complete |
-| EXP-02 | Phase 6 | Pending |
+| EXP-02 | Phase 6 | Complete |
 | EXP-03 | Phase 5 | Complete |
-| EXP-04 | Phase 6 | Pending |
+| EXP-04 | Phase 6 | Complete |
 | EXP-05 | Phase 6 | Complete |
-| EXP-06 | Phase 6 | Pending |
+| EXP-06 | Phase 6 | Complete |
 | EXP-07 | Phase 6 | Complete |
 
 **v1.1 Coverage:**
@@ -127,11 +127,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUIZ-06 | Phase 4 | Complete |
 | QUIZ-07 | Phase 4 | Complete |
 | EXP-01 | Phase 5 | Complete |
-| EXP-02 | Phase 6 | Pending |
+| EXP-02 | Phase 6 | Complete |
 | EXP-03 | Phase 5 | Complete |
-| EXP-04 | Phase 6 | Pending |
+| EXP-04 | Phase 6 | Complete |
 | EXP-05 | Phase 6 | Complete |
-| EXP-06 | Phase 6 | Pending |
+| EXP-06 | Phase 6 | Complete |
 | EXP-07 | Phase 6 | Complete |
 
 **Coverage:**
