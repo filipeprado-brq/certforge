@@ -7,10 +7,15 @@
 
 ## Phases
 
+<!-- Milestone v1.0 (complete) -->
 - [x] **Phase 1: App Shell & Persistence** - Static React/Vite/TS app that runs, navigates, and remembers progress
 - [x] **Phase 2: Exam Content** - Typed, embedded flashcard + question dataset authored from the official guide, browsable in-app (completed 2026-06-10)
 - [x] **Phase 3: Flashcards & Spaced Repetition** - Full SRS-driven flashcard study loop with per-domain progress (completed 2026-06-10)
 - [x] **Phase 4: Quiz Engine & Modes** - Exam-style quiz engine with all 4 modes, results, and attempt history (completed 2026-06-11)
+
+<!-- Milestone v1.1 Content Expansion -->
+- [ ] **Phase 5: Flashcard Bank Expansion** - Grow the deck to ~150 weight-proportional cards covering every task statement (1.1-5.6)
+- [ ] **Phase 6: Question Bank Expansion** - Grow the bank to ~120 weight-proportional questions with deep scenario pools, code/config snippets, and a green invariants/coverage test suite
 
 ## Phase Details
 
@@ -83,6 +88,33 @@ Plans:
 - [x] 04-03-PLAN.md — QuizResults (timed ScoreDial+PassChip / raw %, DomainBars, missed review) + QuizFlow wiring + HistoryScreen (record+view attempts) + Quiz/History route swap + App.test Quiz/History assertion updates
 **UI hint:** yes
 
+<!-- Milestone v1.1 Content Expansion -->
+
+### Phase 5: Flashcard Bank Expansion
+**Goal:** The candidate has a deeper, exam-weight-balanced flashcard deck — grown from ~50 to ≥150 cards — in which every exam-guide task statement (1.1 through 5.6) is represented by at least one card on its core concept, all flowing through the existing SRS study loop unchanged.
+**Mode:** mvp
+**Depends on:** Phase 4 (extends the existing typed content layer and SRS loop shipped in v1.0)
+**Requirements:** EXP-01, EXP-03
+**Success Criteria** (what must be TRUE):
+  1. The flashcard deck contains ≥150 cards, with per-domain counts meeting the weight-proportional minimums (D1 ≥40, D2 ≥27, D3 ≥30, D4 ≥30, D5 ≥23), each card domain-tagged
+  2. Every exam-guide task statement 1.1–5.6 is covered by at least one flashcard on its core concept (verifiable via task-statement coverage)
+  3. All new cards load from the existing typed source embedded in the build (no network fetch) and appear in the SRS study session and the per-domain progress view without code changes to the study loop
+  4. The flashcard-related minimums and per-domain assertions in content.test.ts are updated and green for the expanded deck
+**Plans:** TBD
+
+### Phase 6: Question Bank Expansion
+**Goal:** The candidate has a deeper, exam-realistic question bank — grown from ~40 to ≥120 questions — with strong per-scenario pools, code/config-snippet questions, and harder tradeoff-style distractors, with the full content test suite (new minimums + coverage/scenario assertions + preserved invariants) green.
+**Mode:** mvp
+**Depends on:** Phase 5 (final dataset state; closes out the cross-cutting content.test.ts invariants for the whole expanded bank)
+**Requirements:** EXP-02, EXP-04, EXP-05, EXP-06, EXP-07
+**Success Criteria** (what must be TRUE):
+  1. The question bank contains ≥120 questions with per-domain counts meeting the weight-proportional minimums (D1 ≥32, D2 ≥22, D3 ≥24, D4 ≥24, D5 ≥18), and the 12 official sample questions are preserved unchanged
+  2. Each of the 6 official scenarios has ≥8 scenario-tagged questions, so Scenario Simulation draws from a strong pool for every scenario
+  3. At least 15 questions include a code/config snippet (CLAUDE.md, .mcp.json, tool_choice, hooks, CLI -p/--output-format json/--json-schema, JSON Schema)
+  4. Every new question is exam-style — exactly 1 correct + 3 plausible distractors — with substantive whyCorrect and whyOthers explanations grounded in the guide
+  5. content.test.ts enforces the new minimums plus coverage/scenario assertions while preserving the invariants (official-sample === 12, 4-option shape, unique ids, no network fetch), and typecheck + build + tests are all green
+**Plans:** TBD
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
@@ -91,12 +123,13 @@ Plans:
 | 2. Exam Content | 3/3 | Complete   | 2026-06-10 |
 | 3. Flashcards & Spaced Repetition | 2/2 | Complete | 2026-06-10 |
 | 4. Quiz Engine & Modes | 3/3 | Complete   | 2026-06-11 |
+| 5. Flashcard Bank Expansion | 0/? | Not started | - |
+| 6. Question Bank Expansion | 0/? | Not started | - |
 
 ## Coverage
 
-- v1 requirements: 23 total
-- Mapped to phases: 23 (100%)
-- Orphaned: 0
+**v1.0** (phases 1–4): 23 requirements, 100% mapped, 0 orphaned.
+**v1.1** (phases 5–6): 7 requirements (EXP-01..EXP-07), 100% mapped, 0 orphaned.
 
 | Phase | Requirements |
 |-------|--------------|
@@ -104,6 +137,8 @@ Plans:
 | 2 | CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06 |
 | 3 | FLASH-01, FLASH-02, FLASH-03, FLASH-04, FLASH-05 |
 | 4 | QUIZ-01, QUIZ-02, QUIZ-03, QUIZ-04, QUIZ-05, QUIZ-06, QUIZ-07 |
+| 5 | EXP-01, EXP-03 |
+| 6 | EXP-02, EXP-04, EXP-05, EXP-06, EXP-07 |
 
 ---
-*Last updated: 2026-06-11 after Phase 4 planning (3 plans across 3 waves)*
+*Last updated: 2026-06-11 after v1.1 Content Expansion roadmap (phases 5–6 appended)*

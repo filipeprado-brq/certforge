@@ -59,13 +59,18 @@ The active milestone. Content-only — no new app features. Targets are proporti
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| EXP-01 | TBD | Pending |
-| EXP-02 | TBD | Pending |
-| EXP-03 | TBD | Pending |
-| EXP-04 | TBD | Pending |
-| EXP-05 | TBD | Pending |
-| EXP-06 | TBD | Pending |
-| EXP-07 | TBD | Pending |
+| EXP-01 | Phase 5 | Pending |
+| EXP-02 | Phase 6 | Pending |
+| EXP-03 | Phase 5 | Pending |
+| EXP-04 | Phase 6 | Pending |
+| EXP-05 | Phase 6 | Pending |
+| EXP-06 | Phase 6 | Pending |
+| EXP-07 | Phase 6 | Pending |
+
+**v1.1 Coverage:**
+- v1.1 requirements: 7 total (EXP-01..EXP-07)
+- Mapped to phases: 7 (100%)
+- Unmapped: 0
 
 ## v2 Requirements
 
@@ -121,12 +126,19 @@ Which phases cover which requirements. Updated during roadmap creation.
 | QUIZ-05 | Phase 4 | Complete |
 | QUIZ-06 | Phase 4 | Complete |
 | QUIZ-07 | Phase 4 | Complete |
+| EXP-01 | Phase 5 | Pending |
+| EXP-02 | Phase 6 | Pending |
+| EXP-03 | Phase 5 | Pending |
+| EXP-04 | Phase 6 | Pending |
+| EXP-05 | Phase 6 | Pending |
+| EXP-06 | Phase 6 | Pending |
+| EXP-07 | Phase 6 | Pending |
 
 **Coverage:**
-- v1 requirements: 23 total
-- Mapped to phases: 23 (100%)
+- v1 requirements: 23 total — mapped to phases: 23 (100%)
+- v1.1 requirements: 7 total — mapped to phases: 7 (100%)
 - Unmapped: 0
 
 ---
 *Requirements defined: 2026-06-10*
-*Last updated: 2026-06-10 after Phase 3 plan 03-02 execution (FLASH-01, FLASH-04 complete)*
+*Last updated: 2026-06-11 — v1.1 roadmap created (EXP-01..07 mapped to phases 5–6)*
