@@ -8,24 +8,42 @@ A static, offline-first web app that helps candidates prepare for the **Claude C
 
 A candidate can study the exam's concepts via flashcards and take realistic, exam-style multiple-choice practice questions with explanations — entirely in the browser, offline.
 
+## Current Milestone: v1.1 Content Expansion
+
+**Goal:** Grow and deepen the study bank — from 50→~150 flashcards and 40→~120 questions, proportional to exam weights — without adding app features.
+
+**Target features:**
+- Flashcards expanded to ~150, covering every exam-guide task statement (1.1–5.6)
+- Questions expanded to ~120 (12 official preserved), weight-proportional
+- Stronger Scenario Simulation pool — each of the 6 official scenarios well-represented
+- Harder tradeoff-style questions with plausible distractors (style of the 12 official samples)
+- Code/config-snippet questions (CLAUDE.md, .mcp.json, tool_choice, hooks, CLI flags, JSON Schema)
+- Richer whyCorrect/whyOthers explanations grounded in the guide
+
 ## Requirements
 
 ### Validated
 
-(None yet — ship to validate)
+<!-- v1.0 shipped & verified (phases 1-4, 23 requirements) -->
+
+- ✓ Spaced-repetition (Leitner) flashcards covering all 5 domains — v1.0
+- ✓ Exam-style MCQ (1 correct + 3 distractors + explanation) — v1.0
+- ✓ Four quiz modes: scenario simulation, per-domain, timed full exam (scaled 100–1000, pass 720), free/random — v1.0
+- ✓ Quiz results (score, per-domain breakdown, missed review) + attempt history — v1.0
+- ✓ Local progress persistence (SRS schedule + quiz history) in localStorage — v1.0
+- ✓ Content authored from the official guide, embedded in the build (50 flashcards, 40 questions incl. 12 official) — v1.0
+- ✓ Static React+Vite+TS build, responsive, paper/ink theming, reset-all — v1.0
 
 ### Active
 
-- [ ] User can browse and study flashcards covering concepts from all 5 exam domains
-- [ ] Flashcards use spaced-repetition (Leitner/SRS) so missed cards resurface sooner and known cards space out
-- [ ] User's study progress (SRS scheduling, quiz history) persists locally in the browser (localStorage)
-- [ ] User can take exam-style multiple-choice questions: 1 correct + 3 distractors, with per-question explanation revealed after answering
-- [ ] Quiz mode: scenario simulation — 4 scenarios drawn at random from the 6 exam scenarios, questions grouped by scenario
-- [ ] Quiz mode: per-domain practice — filter questions by one of the 5 domains
-- [ ] Quiz mode: timed full exam — complete simulation with a timer and a final scaled score (100–1000, pass mark 720)
-- [ ] Quiz mode: free/random — draw N random questions for quick practice with explanation after each answer
-- [ ] Content (flashcards + question bank) is authored from the official exam guide and ships embedded in the app
-- [ ] App is a static build deployable to any static host (GitHub Pages / Vercel / Netlify)
+<!-- v1.1 Content Expansion — see EXP-* in REQUIREMENTS.md -->
+
+- [ ] Flashcard bank expanded to ~150, weight-proportional, ≥1 card per task statement (1.1–5.6)
+- [ ] Question bank expanded to ~120, weight-proportional, 12 official preserved
+- [ ] Each of the 6 official scenarios has a strong scenario-tagged question pool
+- [ ] Harder tradeoff-style questions with plausible distractors
+- [ ] Code/config-snippet questions across the relevant domains
+- [ ] Richer explanations + content.test.ts updated minimums/invariants stay green
 
 ### Out of Scope
 
@@ -80,4 +98,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-06-10 after initialization*
+*Last updated: 2026-06-11 — v1.0 shipped (phases 1-4); started milestone v1.1 Content Expansion*
