@@ -10,10 +10,10 @@ Requirements for initial release. Each maps to roadmap phases.
 ### App Shell & Persistence
 
 - [x] **APP-01**: App is a React + Vite + TypeScript project that builds to static assets deployable on any static host
-- [ ] **APP-02**: App has a home screen with navigation to Flashcards and Quiz modes
+- [x] **APP-02**: App has a home screen with navigation to Flashcards and Quiz modes
 - [x] **APP-03**: All study state (SRS schedule, quiz history, scores) persists in browser localStorage and survives refresh
-- [ ] **APP-04**: App is responsive and usable on desktop and mobile browser widths
-- [ ] **APP-05**: User can reset all local progress from the UI
+- [x] **APP-04**: App is responsive and usable on desktop and mobile browser widths
+- [x] **APP-05**: User can reset all local progress from the UI
 
 ### Content
 
@@ -34,11 +34,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Quiz Engine & Modes
 
-- [ ] **QUIZ-01**: Quiz engine presents a question with 4 options, accepts a selection, and reveals correctness + explanation after answering
-- [ ] **QUIZ-02**: Scenario simulation mode — 4 scenarios drawn at random from the 6 exam scenarios, with questions grouped by scenario
-- [ ] **QUIZ-03**: Per-domain practice mode — user picks a domain and answers questions filtered to it
-- [ ] **QUIZ-04**: Timed full-exam mode — full simulation with a countdown timer and a final scaled score (100–1000, pass mark 720 shown as pass/fail)
-- [ ] **QUIZ-05**: Free/random mode — user picks N questions drawn at random, with explanation shown after each answer
+- [x] **QUIZ-01**: Quiz engine presents a question with 4 options, accepts a selection, and reveals correctness + explanation after answering
+- [x] **QUIZ-02**: Scenario simulation mode — 4 scenarios drawn at random from the 6 exam scenarios, with questions grouped by scenario
+- [x] **QUIZ-03**: Per-domain practice mode — user picks a domain and answers questions filtered to it
+- [x] **QUIZ-04**: Timed full-exam mode — full simulation with a countdown timer and a final scaled score (100–1000, pass mark 720 shown as pass/fail)
+- [x] **QUIZ-05**: Free/random mode — user picks N questions drawn at random, with explanation shown after each answer
 - [x] **QUIZ-06**: After a quiz, user sees a results summary (score, per-domain breakdown, review of missed questions)
 - [x] **QUIZ-07**: Quiz attempt history is recorded and viewable
 
@@ -74,10 +74,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | APP-01 | Phase 1 | Complete |
-| APP-02 | Phase 1 | Pending |
+| APP-02 | Phase 1 | Complete |
 | APP-03 | Phase 1 | Complete |
-| APP-04 | Phase 1 | Pending |
-| APP-05 | Phase 1 | Pending |
+| APP-04 | Phase 1 | Complete |
+| APP-05 | Phase 1 | Complete |
 | CONT-01 | Phase 2 | Complete |
 | CONT-02 | Phase 2 | Complete |
 | CONT-03 | Phase 2 | Complete |
@@ -89,11 +89,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FLASH-03 | Phase 3 | Complete |
 | FLASH-04 | Phase 3 | Complete |
 | FLASH-05 | Phase 3 | Complete |
-| QUIZ-01 | Phase 4 | Pending |
-| QUIZ-02 | Phase 4 | Pending |
-| QUIZ-03 | Phase 4 | Pending |
-| QUIZ-04 | Phase 4 | Pending |
-| QUIZ-05 | Phase 4 | Pending |
+| QUIZ-01 | Phase 4 | Complete |
+| QUIZ-02 | Phase 4 | Complete |
+| QUIZ-03 | Phase 4 | Complete |
+| QUIZ-04 | Phase 4 | Complete |
+| QUIZ-05 | Phase 4 | Complete |
 | QUIZ-06 | Phase 4 | Complete |
 | QUIZ-07 | Phase 4 | Complete |
 
