@@ -4,9 +4,9 @@ import { ThemePref } from './lib/storage'
 import { AppShell } from './components/AppShell'
 import { Dashboard } from './screens/Dashboard'
 import { Settings } from './screens/Settings'
-import { Placeholder } from './screens/Placeholder'
 import { FlashcardsStudy } from './screens/FlashcardsStudy'
-import { QuizBrowse } from './screens/QuizBrowse'
+import { QuizFlow } from './screens/QuizFlow'
+import { HistoryScreen } from './screens/HistoryScreen'
 
 export type Route = 'home' | 'flashcards' | 'quiz' | 'history' | 'settings'
 
@@ -45,9 +45,9 @@ export function App() {
   } else if (route === 'flashcards') {
     screen = <FlashcardsStudy />
   } else if (route === 'quiz') {
-    screen = <QuizBrowse />
+    screen = <QuizFlow />
   } else if (route === 'history') {
-    screen = <Placeholder title="History" />
+    screen = <HistoryScreen />
   } else if (route === 'settings') {
     screen = (
       <Settings

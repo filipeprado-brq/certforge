@@ -55,15 +55,24 @@ describe('App — navigation', () => {
     expect(screen.queryByText('Coming soon')).not.toBeInTheDocument()
   })
 
-  it('switches to Quiz browse catalog when Quiz nav tab is clicked', () => {
+  it('switches to ModeSelect when Quiz nav tab is clicked', () => {
     render(<App />)
     const quizBtns = screen.getAllByRole('button', { name: 'Quiz' })
     fireEvent.click(quizBtns[0])
     // Quiz tab should now have aria-current="page"
     const activeButtons = screen.getAllByRole('button', { name: 'Quiz' })
     expect(activeButtons[0]).toHaveAttribute('aria-current', 'page')
-    // Content should show the question bank, NOT the placeholder
-    expect(screen.getByText('Question bank')).toBeInTheDocument()
+    // Content should show the ModeSelect heading, NOT QuizBrowse or placeholder
+    expect(screen.getByRole('heading', { name: /Choose a mode/i })).toBeInTheDocument()
+    expect(screen.queryByText('Coming soon')).not.toBeInTheDocument()
+  })
+
+  it('switches to History view when History nav tab is clicked', () => {
+    render(<App />)
+    const historyBtns = screen.getAllByRole('button', { name: 'History' })
+    fireEvent.click(historyBtns[0])
+    // Content should show the quiz history heading, NOT the placeholder
+    expect(screen.getByRole('heading', { name: /Quiz history/i })).toBeInTheDocument()
     expect(screen.queryByText('Coming soon')).not.toBeInTheDocument()
   })
 })
