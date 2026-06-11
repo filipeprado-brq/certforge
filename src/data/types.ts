@@ -32,4 +32,5 @@ export interface Question {
   whyCorrect: string
   whyOthers: string
   source?: Source
+  hasSnippet?: boolean    // true when the stem embeds a readable code/config snippet (EXP-05)
 }
