@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Plan 03-02 complete — study loop UI implemented; FlashcardsStudy + Dashboard wired
-last_updated: "2026-06-10T23:40:00.000Z"
+stopped_at: Plan 04-01 complete — pure quiz engine + quizHistory persistence implemented
+last_updated: "2026-06-11T09:18:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 7
-  completed_plans: 7
-  percent: 100
+  total_plans: 10
+  completed_plans: 8
+  percent: 80
 ---
 
 # Project State: Claude Architect Exam Trainer
@@ -20,22 +20,22 @@ progress:
 **Core value:** A candidate can study the exam's concepts via flashcards and take realistic, exam-style multiple-choice practice questions with explanations — entirely in the browser, offline.
 **Tech stack:** React + Vite + TypeScript, localStorage persistence, static build.
 **Mode:** mvp (vertical slices)
-**Current focus:** Phase 03 — flashcards-spaced-repetition
+**Current focus:** Phase 04 — quiz-engine-modes
 
 ## Current Position
 
-Phase: 03 (flashcards-spaced-repetition) — EXECUTING
-Plan: 2 of 2
-**Phase:** 2 of 4 — Exam Content
-**Plan:** 02-03 complete; all Phase 2 plans done
-**Status:** Executing Phase 03
-**Progress:** [█████████░] 86%
+Phase: 04 (quiz-engine-modes) — EXECUTING
+Plan: 2 of 3
+**Phase:** 4 of 4 — Quiz Engine & Modes
+**Plan:** 04-01 complete; pure quiz engine + quizHistory persistence implemented
+**Status:** Executing Phase 04
+**Progress:** [████████░░] 80%
 
 ## Performance Metrics
 
 - Phases complete: 0/4 (Phase 01 plans all done; phase-level complete after verifier)
-- Plans complete: 7 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02)
-- Requirements delivered: 17/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06, FLASH-01, FLASH-02, FLASH-03, FLASH-04, FLASH-05)
+- Plans complete: 8 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 04-01)
+- Requirements delivered: 23/23 (APP-02, APP-03, APP-04, APP-05, CONT-01, CONT-02, CONT-03, CONT-04, CONT-05, CONT-06, FLASH-01, FLASH-02, FLASH-03, FLASH-04, FLASH-05, QUIZ-01, QUIZ-02, QUIZ-03, QUIZ-04, QUIZ-05, QUIZ-07)
 
 ## Accumulated Context
 
@@ -67,6 +67,10 @@ Plan: 2 of 2
 - FlashcardsStudy uses single-component view-gated design (deck/session state); queue captured once at session start via buildDueQueue
 - Dashboard mastery replaced with real SRS-derived deckStatsByDomain; stat-num shows due count (falls back to total)
 - Flashcards route now leads with study loop (FlashcardsStudy); FlashcardsBrowse kept in repo as unused file
+- Pure quiz engine (quiz.ts): scaledScore/isPass/gradeAttempt/selectQuestions/remainingSeconds/isExpired; rng+nowMs injected by caller; zero Math.random/Date.now inside module
+- selectQuestions supports 4 modes: scenario (4-of-6 grouped), domain (filter), timed (fixed 10), free (clamp 5-15, default 10)
+- QuizAttempt added to PersistedState as quizHistory: QuizAttempt[] (default [], schemaVersion stays 1); addAttempt prepends
+- QuizAttempt.perDomain is flat pct map (Record<DomainId, number>); distinct from GradeResult.perDomain (UI converts shapes)
 
 ### Phase boundaries
 
@@ -83,9 +87,9 @@ Plan: 2 of 2
 
 ## Session Continuity
 
-**Last action:** Completed plan 03-02 (FlashcardsStudy.tsx study loop UI + Dashboard real SRS mastery + component tests; 81 tests pass; typecheck + build exit 0).
-**Stopped at:** Plan 03-02 complete — study loop UI implemented; FlashcardsStudy + Dashboard wired
-**Next step:** Phase 04 — Quiz engine (or verifier for Phase 03)
+**Last action:** Completed plan 04-01 (pure quiz engine quiz.ts + quizHistory persistence; 130 tests pass; typecheck + build exit 0; purity gate passes).
+**Stopped at:** Plan 04-01 complete — pure quiz engine + quizHistory persistence implemented
+**Next step:** Phase 04 Plan 02 — Quiz runner UI (ModeSelect, QuizRunner, QuizResults screens)
 
 ---
 *Last updated: 2026-06-10 after plan 03-01 execution*
