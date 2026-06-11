@@ -125,8 +125,8 @@ describe('HistoryScreen — opening an attempt (non-empty missed review)', () =>
     render(<HistoryScreen />)
     const row = screen.getByRole('button', { name: /Jun 11, 2026/i })
     fireEvent.click(row)
-    // QuizResults renders "Results · " or date kicker
-    expect(screen.getByText(/Quiz history/i)).toBeInTheDocument()
+    // QuizResults in isHistory mode renders the date kicker and Back to history
+    expect(screen.getByRole('button', { name: /Back to history/i })).toBeInTheDocument()
   })
 
   it('shows the missed question stem in the review (non-empty review)', () => {
