@@ -7,7 +7,7 @@ import { DOMAINS } from '../data/domains'
 import type { DomainId } from '../data/domains'
 import type { Question } from '../data/types'
 import type { Answers, GradeResult } from '../lib/quiz'
-import { ScoreDial, DomainBars, PassChip } from '../components/QuizParts'
+import { ScoreDial, DomainBars } from '../components/QuizParts'
 import { DomainBadge } from '../components/DomainBadge'
 import { Btn } from '../components/Btn'
 

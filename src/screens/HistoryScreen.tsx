@@ -58,13 +58,6 @@ export function HistoryScreen() {
   if (open) {
     const view = buildResultView(open)
 
-    // Override DomainBars source: for reopened attempts, perDomain is already
-    // a flat number map — pass it directly, bypassing the engine shape conversion.
-    // We create an augmented grade with the flat perDomain from storage.
-    const gradeWithFlatDomain = {
-      ...view.grade,
-      perDomain: open.perDomain as Partial<Record<DomainId, { correct: number; total: number; pct: number }>>,
-    }
     // Since QuizResults will convert grade.perDomain[d].pct, and our stored map is
     // already flat numbers, we need to wrap them in the object shape QuizResults expects.
     // Alternative: pass a version that already has the flat pct map ready by wrapping
