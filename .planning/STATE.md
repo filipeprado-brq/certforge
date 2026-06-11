@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Content Expansion
 status: executing
-stopped_at: None (plan complete).
-last_updated: "2026-06-11T15:26:00.000Z"
+stopped_at: None (Phase 5 complete).
+last_updated: "2026-06-11T16:31:56.007Z"
 last_activity: 2026-06-11
 progress:
   total_phases: 6
   completed_phases: 5
-  total_plans: 14
-  completed_plans: 14
-  percent: 100
+  total_plans: 18
+  completed_plans: 15
+  percent: 83
 ---
 
 # Project State: Claude Architect Exam Trainer
@@ -21,21 +21,21 @@ progress:
 **Core value:** A candidate can study the exam's concepts via flashcards and take realistic, exam-style multiple-choice practice questions with explanations — entirely in the browser, offline.
 **Tech stack:** React + Vite + TypeScript, localStorage persistence, static build.
 **Mode:** mvp (vertical slices)
-**Current focus:** Phase 05 — flashcard-bank-expansion
+**Current focus:** Phase 06 — question-bank-expansion
 
 ## Current Position
 
-Phase: 05 (flashcard-bank-expansion) — COMPLETE
+Phase: 06 (question-bank-expansion) — EXECUTING
 Phase: 06 (question-bank-expansion) — NEXT
-Plan: 4 of 4 (Phase 5 done)
-Status: Phase 5 complete; ready to plan Phase 6
+Plan: 2 of 4
+Status: Ready to execute
 Last activity: 2026-06-11
 
 ## Performance Metrics
 
 - Phases complete: 5/6 (v1.0 phases 1–4 complete; Phase 5 flashcard expansion complete; Phase 6 pending)
-- Plans complete: 14 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 04-01, 04-02, 04-03, 05-01, 05-02, 05-03, 05-04)
-- Requirements delivered: 25/30 (all v1.0 + EXP-01, EXP-03 delivered; EXP-02, EXP-04..07 pending)
+- Plans complete: 15 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 04-01, 04-02, 04-03, 05-01, 05-02, 05-03, 05-04, 06-01)
+- Requirements delivered: 27/30 (all v1.0 + EXP-01, EXP-03 delivered; EXP-05, EXP-07 gate setup delivered; EXP-02, EXP-04, EXP-06 pending)
 
 ## Accumulated Context
 
@@ -78,15 +78,17 @@ Last activity: 2026-06-11
 
 ## Session Continuity
 
-**Last action:** Completed 05-04-PLAN.md — authored 17 new D5 flashcards (f141-f157) covering all 5.1-5.6 task statements; deck now 157 total (D5: 25); all 30 task statements covered; npm test 193/193, typecheck + build green. Phase 5 complete; EXP-01 and EXP-03 delivered.
-**Stopped at:** None (Phase 5 complete).
-**Next step:** Plan and execute Phase 6 (Question Bank Expansion — EXP-02, EXP-04..07).
+**Last action:** Completed 06-01-PLAN.md — added hasSnippet?: boolean to Question type; raised content.test.ts to Phase 6 acceptance bar (>=120 total, {d1:32,d2:22,d3:24,d4:24,d5:18} per-domain, 6 scenarios >=8 each, >=15 snippets); 12 new question gates RED (expected TDD gate), 189 other tests green; typecheck + build green. EXP-05 and EXP-07 gate setup delivered.
+**Stopped at:** None (06-01 complete; 06-02 next).
+**Next step:** Execute 06-02 (author new D1/D2/D3 questions q29–q84).
 
 ### Decisions
 
 - D5 cards authored: 17 (f141-f157, 2 more than planned 15, to cover the missed 5.6 statement)
 - No backfill of f1-f50 required — 1.1-4.6 were already covered by f51-f140
 - Total deck: 157 flashcards; D5: 25 cards
+- hasSnippet?: boolean is OPTIONAL on Question so existing 40 questions remain valid without edits (06-01)
+- Phase 6 RED-gate test suite mirrors Phase 5 pattern: 12 question tests fail first, authoring plans 06-02/03/04 drive GREEN (06-01)
 
 ---
-*Last updated: 2026-06-11 after 05-04 Phase 5 completion*
+*Last updated: 2026-06-11 after 06-01 Phase 6 TDD gate setup*

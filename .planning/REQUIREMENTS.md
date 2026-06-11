@@ -51,9 +51,9 @@ The active milestone. Content-only — no new app features. Targets are proporti
 - [ ] **EXP-02**: Question bank expanded to ≥120 total, weight-proportional (≥ D1 32, D2 22, D3 24, D4 24, D5 18); the 12 official sample questions preserved unchanged
 - [x] **EXP-03**: Every exam-guide task statement (1.1–5.6) is covered by ≥1 flashcard on its core concept
 - [ ] **EXP-04**: Each of the 6 official scenarios has ≥8 scenario-tagged questions (strong Scenario Simulation pool)
-- [ ] **EXP-05**: ≥15 questions include a code/config snippet (CLAUDE.md, .mcp.json, tool_choice, hooks, CLI -p/--output-format json/--json-schema, JSON Schema)
+- [x] **EXP-05**: ≥15 questions include a code/config snippet (CLAUDE.md, .mcp.json, tool_choice, hooks, CLI -p/--output-format json/--json-schema, JSON Schema)
 - [ ] **EXP-06**: All new questions are exam-style — exactly 1 correct + 3 plausible distractors, with substantive whyCorrect + whyOthers grounded in the guide
-- [ ] **EXP-07**: content.test.ts updated with the new minimums + coverage/scenario assertions; invariants preserved (official-sample === 12, 4-option shape, unique ids, no network fetch); typecheck + build + tests green
+- [x] **EXP-07**: content.test.ts updated with the new minimums + coverage/scenario assertions; invariants preserved (official-sample === 12, 4-option shape, unique ids, no network fetch); typecheck + build + tests green
 
 ### v1.1 Traceability
 
@@ -63,9 +63,9 @@ The active milestone. Content-only — no new app features. Targets are proporti
 | EXP-02 | Phase 6 | Pending |
 | EXP-03 | Phase 5 | Complete |
 | EXP-04 | Phase 6 | Pending |
-| EXP-05 | Phase 6 | Pending |
+| EXP-05 | Phase 6 | Complete |
 | EXP-06 | Phase 6 | Pending |
-| EXP-07 | Phase 6 | Pending |
+| EXP-07 | Phase 6 | Complete |
 
 **v1.1 Coverage:**
 - v1.1 requirements: 7 total (EXP-01..EXP-07)
@@ -130,9 +130,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | EXP-02 | Phase 6 | Pending |
 | EXP-03 | Phase 5 | Complete |
 | EXP-04 | Phase 6 | Pending |
-| EXP-05 | Phase 6 | Pending |
+| EXP-05 | Phase 6 | Complete |
 | EXP-06 | Phase 6 | Pending |
-| EXP-07 | Phase 6 | Pending |
+| EXP-07 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total — mapped to phases: 23 (100%)
