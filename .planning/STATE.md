@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Content Expansion
-status: executing
-stopped_at: None (06-01 complete; 06-02 next).
-last_updated: "2026-06-11T16:39:45.053Z"
+status: complete
+stopped_at: None — Phase 6 complete; all plans 06-01 through 06-04 delivered.
+last_updated: "2026-06-11T17:50:00.000Z"
 last_activity: 2026-06-11
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 18
-  completed_plans: 16
-  percent: 89
+  completed_plans: 18
+  percent: 100
 ---
 
 # Project State: Claude Architect Exam Trainer
@@ -25,17 +25,17 @@ progress:
 
 ## Current Position
 
-Phase: 06 (question-bank-expansion) — EXECUTING
-Phase: 06 (question-bank-expansion) — NEXT
-Plan: 3 of 4
-Status: Ready to execute
+Phase: 06 (question-bank-expansion) — COMPLETE
+All phases complete. v1.1 milestone delivered.
+Plan: 4 of 4 (DONE)
+Status: Complete
 Last activity: 2026-06-11
 
 ## Performance Metrics
 
-- Phases complete: 5/6 (v1.0 phases 1–4 complete; Phase 5 flashcard expansion complete; Phase 6 pending)
-- Plans complete: 15 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 04-01, 04-02, 04-03, 05-01, 05-02, 05-03, 05-04, 06-01)
-- Requirements delivered: 27/30 (all v1.0 + EXP-01, EXP-03 delivered; EXP-05, EXP-07 gate setup delivered; EXP-02, EXP-04, EXP-06 pending)
+- Phases complete: 6/6 (all phases 1–6 complete; v1.1 milestone delivered)
+- Plans complete: 18 (01-01, 01-02, 02-01, 02-02, 02-03, 03-01, 03-02, 04-01, 04-02, 04-03, 05-01, 05-02, 05-03, 05-04, 06-01, 06-02, 06-03, 06-04)
+- Requirements delivered: 32/32 (all v1.0 + EXP-01/02/03/04/05/06/07 all delivered; Phase 6 complete)
 
 ## Accumulated Context
 
@@ -78,9 +78,9 @@ Last activity: 2026-06-11
 
 ## Session Continuity
 
-**Last action:** Completed 06-01-PLAN.md — added hasSnippet?: boolean to Question type; raised content.test.ts to Phase 6 acceptance bar (>=120 total, {d1:32,d2:22,d3:24,d4:24,d5:18} per-domain, 6 scenarios >=8 each, >=15 snippets); 12 new question gates RED (expected TDD gate), 189 other tests green; typecheck + build green. EXP-05 and EXP-07 gate setup delivered.
-**Stopped at:** None (06-01 complete; 06-02 next).
-**Next step:** Execute 06-02 (author new D1/D2/D3 questions q29–q84).
+**Last action:** Completed 06-04-PLAN.md — authored 13 D5 questions q102-q114 grounded in task statements 5.1-5.6; Structured Data Extraction scenario reached 9 (buffer); total bank 126 questions; hasSnippet 17; all 6 EXP gates closed GREEN; 201/201 tests pass; typecheck + build green. Phase 6 + v1.1 milestone complete.
+**Stopped at:** None — all phases complete.
+**Next step:** v1.1 milestone delivered; no pending plans.
 
 ### Decisions
 
@@ -89,6 +89,10 @@ Last activity: 2026-06-11
 - Total deck: 157 flashcards; D5: 25 cards
 - hasSnippet?: boolean is OPTIONAL on Question so existing 40 questions remain valid without edits (06-01)
 - Phase 6 RED-gate test suite mirrors Phase 5 pattern: 12 question tests fail first, authoring plans 06-02/03/04 drive GREEN (06-01)
+- D5 questions grounded in task statements 5.1-5.6: evaluation, observability, cost/quality tradeoffs, safety/red-teaming, metric-driven iteration, production reliability
+- 5 of 13 D5 questions tagged 'Structured Data Extraction' to reach the 9-question buffer (+1 above >=8 gate)
+- All snippet content uses JSON/JSON Schema formats — no fetch(/import(/axios/XHR patterns used
+- Benchmark update scenario (q113) illustrates that score drops after realistic eval set expansion are healthy signals, not regressions
 
 ---
-*Last updated: 2026-06-11 after 06-01 Phase 6 TDD gate setup*
+*Last updated: 2026-06-11 after 06-04 Phase 6 closeout — v1.1 milestone complete*
