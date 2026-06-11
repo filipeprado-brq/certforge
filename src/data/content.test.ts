@@ -10,27 +10,27 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { getFlashcards, getQuestions, flashcardCountsByDomain, questionCountsByDomain } from './content'
 
-// Per-domain minimum targets (from 02-CONTEXT.md — must track exam weights)
-const FC_MIN = { d1: 13, d2: 9, d3: 10, d4: 10, d5: 8 }
+// Per-domain minimum targets (from 05-CONTEXT.md — must track exam weights)
+const FC_MIN = { d1: 40, d2: 27, d3: 30, d4: 30, d5: 23 }
 const Q_MIN  = { d1: 11, d2: 7,  d3: 8,  d4: 8,  d5: 6 }
 
 // ---------------------------------------------------------------------------
 // Count invariants — per-domain minimums
 // ---------------------------------------------------------------------------
 describe('per-domain minimum counts', () => {
-  it('flashcard count d1 >= 13', () => {
+  it('flashcard count d1 >= 40', () => {
     expect(flashcardCountsByDomain()['d1']).toBeGreaterThanOrEqual(FC_MIN.d1)
   })
-  it('flashcard count d2 >= 9', () => {
+  it('flashcard count d2 >= 27', () => {
     expect(flashcardCountsByDomain()['d2']).toBeGreaterThanOrEqual(FC_MIN.d2)
   })
-  it('flashcard count d3 >= 10', () => {
+  it('flashcard count d3 >= 30', () => {
     expect(flashcardCountsByDomain()['d3']).toBeGreaterThanOrEqual(FC_MIN.d3)
   })
-  it('flashcard count d4 >= 10', () => {
+  it('flashcard count d4 >= 30', () => {
     expect(flashcardCountsByDomain()['d4']).toBeGreaterThanOrEqual(FC_MIN.d4)
   })
-  it('flashcard count d5 >= 8', () => {
+  it('flashcard count d5 >= 23', () => {
     expect(flashcardCountsByDomain()['d5']).toBeGreaterThanOrEqual(FC_MIN.d5)
   })
 
@@ -55,8 +55,8 @@ describe('per-domain minimum counts', () => {
 // Count invariants — totals
 // ---------------------------------------------------------------------------
 describe('content totals', () => {
-  it('getFlashcards() returns at least 50 flashcards', () => {
-    expect(getFlashcards().length).toBeGreaterThanOrEqual(50)
+  it('getFlashcards() returns at least 150 flashcards', () => {
+    expect(getFlashcards().length).toBeGreaterThanOrEqual(150)
   })
 
   it('getQuestions() returns at least 40 questions', () => {
@@ -188,6 +188,28 @@ describe('count maps', () => {
   it('questionCountsByDomain() covers all 5 domains', () => {
     const counts = questionCountsByDomain()
     expect(Object.keys(counts).sort()).toEqual(['d1', 'd2', 'd3', 'd4', 'd5'])
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Task-statement coverage (EXP-03)
+// ---------------------------------------------------------------------------
+describe('task-statement coverage (EXP-03)', () => {
+  const TASK_STATEMENTS = ['1.1','1.2','1.3','1.4','1.5','1.6','1.7','2.1','2.2','2.3','2.4','2.5','3.1','3.2','3.3','3.4','3.5','3.6','4.1','4.2','4.3','4.4','4.5','4.6','5.1','5.2','5.3','5.4','5.5','5.6'] as const
+  const present = new Set(getFlashcards().map(f => f.taskRef).filter(Boolean))
+
+  it('TASK_STATEMENTS covers all 30 task statement ids', () => {
+    expect(TASK_STATEMENTS.length).toBe(30)
+  })
+
+  it('every task statement 1.1-5.6 appears as a taskRef on >=1 flashcard', () => {
+    TASK_STATEMENTS.forEach(ts => expect(present.has(ts)).toBe(true))
+  })
+
+  it('every taskRef value is a valid task statement', () => {
+    getFlashcards().forEach(f => {
+      if (f.taskRef) expect(TASK_STATEMENTS).toContain(f.taskRef)
+    })
   })
 })
 
