@@ -116,3 +116,11 @@ None - no external service configuration required.
 ---
 *Phase: 06-question-bank-expansion*
 *Completed: 2026-06-11*
+
+## Self-Check: PASSED
+
+- src/data/types.ts: FOUND
+- src/data/content.test.ts: FOUND
+- .planning/phases/06-question-bank-expansion/06-01-SUMMARY.md: FOUND
+- Commit dd7ab97 (feat: hasSnippet field): FOUND
+- Commit 57fb72e (test: RED gate): FOUND
