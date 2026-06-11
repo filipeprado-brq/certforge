@@ -2,3 +2,8 @@ node_modules
 dist
 *.local
 .DS_Store
+
+# build artifacts (tsc -b composite emit)
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
