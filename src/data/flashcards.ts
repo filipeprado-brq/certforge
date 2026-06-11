@@ -711,4 +711,316 @@ export const FLASHCARDS: Flashcard[] = [
     front: 'When to use the Write tool vs. Edit tool',
     back: 'Use Edit for in-place changes to existing files when the target string is unique. Use Write (full file replacement) when creating new files, doing a complete rewrite, or when Edit would fail due to ambiguous match. Always Read the file first before overwriting.',
   },
+
+  // ---------------------------------------------------------------------------
+  // D3 — Claude Code Configuration & Workflows (NEW: f101–f120, taskRef 3.1–3.6)
+  // ---------------------------------------------------------------------------
+
+  // 3.1 CLAUDE.md hierarchy
+  {
+    id: 'f101',
+    domain: 'd3',
+    taskRef: '3.1',
+    front: 'User-global vs. project-level CLAUDE.md',
+    back: '`~/.claude/CLAUDE.md` applies to every Claude Code session for that user. A project-level `CLAUDE.md` at the repo root (or in `.claude/CLAUDE.md`) applies only within that project. Project-level instructions supplement, not replace, the user-global file.',
+  },
+  {
+    id: 'f102',
+    domain: 'd3',
+    taskRef: '3.1',
+    front: 'Directory-level CLAUDE.md files',
+    back: 'Placing a `CLAUDE.md` inside a subdirectory makes its instructions active only when working within that directory. This allows frontend, backend, and docs directories to each carry distinct conventions without polluting the root-level file.',
+  },
+  {
+    id: 'f103',
+    domain: 'd3',
+    taskRef: '3.1',
+    front: '@import directive in CLAUDE.md',
+    back: 'Use `@import path/to/file.md` inside a CLAUDE.md to pull in a separate Markdown file at load time. This lets you split large instruction sets into topic files (e.g. `@import .claude/rules/testing.md`) and keep each file focused and maintainable.',
+  },
+  {
+    id: 'f104',
+    domain: 'd3',
+    taskRef: '3.1',
+    front: '/memory command in Claude Code',
+    back: 'The `/memory` slash command lists all CLAUDE.md files currently loaded in the session, in loading order. Use it to verify that the correct hierarchy of global, project, and directory-level files were actually picked up before debugging unexpected behavior.',
+  },
+
+  // 3.2 Custom slash commands & skills
+  {
+    id: 'f105',
+    domain: 'd3',
+    taskRef: '3.2',
+    front: 'Project vs. personal slash commands',
+    back: 'Commands in `.claude/commands/` are project-scoped and committed to version control — all contributors share them. Commands in `~/.claude/commands/` are personal and available in every project for that user only. Invoke either with `/command-name`.',
+  },
+  {
+    id: 'f106',
+    domain: 'd3',
+    taskRef: '3.2',
+    front: 'SKILL.md context:fork frontmatter field',
+    back: 'Setting `context: fork` in a SKILL.md frontmatter causes Claude Code to run that skill in a forked session — an isolated context copy. Changes, tool calls, and state produced by the skill do not leak back into the parent session unless explicitly returned.',
+  },
+  {
+    id: 'f107',
+    domain: 'd3',
+    taskRef: '3.2',
+    front: 'allowed-tools and argument-hint in SKILL.md',
+    back: '`allowed-tools` in SKILL.md frontmatter restricts which tools the skill may call, preventing over-broad access. `argument-hint` provides a usage hint shown in the slash-command autocomplete, guiding the user on expected arguments.',
+  },
+  {
+    id: 'f108',
+    domain: 'd3',
+    taskRef: '3.2',
+    front: 'Skills (on-demand) vs. CLAUDE.md (always-loaded)',
+    back: 'CLAUDE.md content is loaded into every session unconditionally, consuming context window space. Skills are loaded only when the user explicitly invokes them via `/skill-name`. For infrequently-used instructions, a skill is more context-efficient than a CLAUDE.md entry.',
+  },
+
+  // 3.3 Path-specific rules
+  {
+    id: 'f109',
+    domain: 'd3',
+    taskRef: '3.3',
+    front: 'paths: glob frontmatter in .claude/rules/ files',
+    back: 'Rules files under `.claude/rules/` carry YAML frontmatter with a `paths:` key containing glob patterns (e.g. `["src/**/*.ts"]`). Claude Code activates that rules file automatically when the current working file matches any listed glob.',
+  },
+  {
+    id: 'f110',
+    domain: 'd3',
+    taskRef: '3.3',
+    front: 'Why glob rules beat directory-level CLAUDE.md for scattered files',
+    back: 'A directory CLAUDE.md only applies to files in that directory. A glob rule with `**/*.test.tsx` applies to every test file anywhere in the repo. Use glob rules when a convention (e.g. test-file style) cuts across multiple directories.',
+  },
+  {
+    id: 'f111',
+    domain: 'd3',
+    taskRef: '3.3',
+    front: 'Organizing multiple rules files in .claude/rules/',
+    back: 'Each file in `.claude/rules/` should cover a single topic (e.g. `api-conventions.md`, `testing-style.md`). Combined with glob activation, this gives fine-grained, composable rule sets — only the relevant topic files load for any given file.',
+  },
+
+  // 3.4 Plan mode vs direct execution
+  {
+    id: 'f112',
+    domain: 'd3',
+    taskRef: '3.4',
+    front: 'When to use plan mode instead of direct execution',
+    back: 'Use plan mode for large-scale, architectural, or multi-file changes where the right approach is not yet clear. Plan mode lets Claude explore, read, and reason without touching files — reducing costly mistakes on high-impact operations.',
+  },
+  {
+    id: 'f113',
+    domain: 'd3',
+    taskRef: '3.4',
+    front: 'Explore subagent in Claude Code',
+    back: 'The Explore subagent performs verbose discovery of a codebase — reading files, following imports, mapping structure — without producing any edits. Use it before delegating a complex refactor to ensure the acting agent starts with accurate context.',
+  },
+  {
+    id: 'f114',
+    domain: 'd3',
+    taskRef: '3.4',
+    front: 'Combine plan-then-execute for large tasks',
+    back: 'Run plan mode first to produce a step-by-step approach and surface unknowns. Once the plan is reviewed and approved, switch to direct execution. This two-phase pattern avoids mid-refactor surprises and makes large changes auditable.',
+  },
+
+  // 3.5 Iterative refinement
+  {
+    id: 'f115',
+    domain: 'd3',
+    taskRef: '3.5',
+    front: 'Concrete I/O examples beat prose instructions',
+    back: 'Showing an input-output pair ("given X, produce Y") is more precise than describing the transformation in words. Examples resolve ambiguity that prose leaves open, and Claude can generalize from them to novel cases more reliably than from rules alone.',
+  },
+  {
+    id: 'f116',
+    domain: 'd3',
+    taskRef: '3.5',
+    front: 'Test-driven iteration in Claude Code',
+    back: 'Write a failing test first, then ask Claude to make it pass. Each cycle, the test acts as a precise, unambiguous success criterion — preventing scope creep, confirming regressions, and giving Claude a mechanical verification step rather than a subjective one.',
+  },
+  {
+    id: 'f117',
+    domain: 'd3',
+    taskRef: '3.5',
+    front: 'Single-message vs. sequential fixes in iterative refinement',
+    back: 'Single-message (interacting) mode sends all feedback in one turn — best when fixes are interdependent or must be consistent. Sequential mode addresses each issue independently in separate turns — better when issues are orthogonal and you want to verify each fix before proceeding.',
+  },
+
+  // 3.6 CI/CD integration
+  {
+    id: 'f118',
+    domain: 'd3',
+    taskRef: '3.6',
+    front: '-p / --print flag for CI non-interactive use',
+    back: 'Passing `-p` (short for `--print`) runs Claude Code in headless mode: it processes the prompt and exits without waiting for interactive input. This is the standard entry point for integrating Claude Code into CI pipelines and shell scripts.',
+  },
+  {
+    id: 'f119',
+    domain: 'd3',
+    taskRef: '3.6',
+    front: '--output-format json with --json-schema in CI',
+    back: '`--output-format json` makes Claude Code emit a JSON object instead of prose. Pair it with `--json-schema path/to/schema.json` to validate the output against a schema before downstream steps consume it, turning Claude\'s response into a typed data contract.',
+  },
+  {
+    id: 'f120',
+    domain: 'd3',
+    taskRef: '3.6',
+    front: 'Independent review instance for CI self-review',
+    back: 'A Claude instance reviewing its own output in the same session retains its original reasoning and misses the same errors. Spawn a separate, independent Claude instance with only the artifact under review — its fresh context catches issues the author\'s session normalized.',
+  },
+
+  // ---------------------------------------------------------------------------
+  // D4 — Prompt Engineering & Structured Output (NEW: f121–f140, taskRef 4.1–4.6)
+  // ---------------------------------------------------------------------------
+
+  // 4.1 Explicit criteria / precision / false positives
+  {
+    id: 'f121',
+    domain: 'd4',
+    taskRef: '4.1',
+    front: 'Why "be conservative" is a bad classification criterion',
+    back: '"Be conservative" gives the model no actionable boundary — each response may interpret it differently. Replace vague caution with specific categorical rules: "flag if the message contains a threat, slur, or solicitation; do not flag venting or sarcasm."',
+  },
+  {
+    id: 'f122',
+    domain: 'd4',
+    taskRef: '4.1',
+    front: 'False-positive categories erode trust',
+    back: 'Classify false-positive patterns explicitly (e.g. "sarcasm that sounds threatening", "medical terms that superficially match prohibited keywords") and instruct Claude to skip flagging them. Uncontrolled false positives cause downstream teams to distrust and bypass the classifier.',
+  },
+  {
+    id: 'f123',
+    domain: 'd4',
+    taskRef: '4.1',
+    front: 'Severity criteria with code examples',
+    back: 'When classifying severity, pair each level with a representative code or text example inline: "CRITICAL: SQL injection pattern — e.g. `\' OR 1=1--`". Anchoring to examples prevents severity calibration drift across model versions and reviewers.',
+  },
+  {
+    id: 'f124',
+    domain: 'd4',
+    taskRef: '4.1',
+    front: 'Categorical criteria vs. gradient criteria',
+    back: 'Categorical criteria ("flag if X or Y or Z") produce consistent results because the model makes a binary decision per category. Gradient criteria ("flag if it seems harmful") are subjective, produce inconsistent thresholds, and are hard to validate with labeled test sets.',
+  },
+
+  // 4.2 Few-shot prompting
+  {
+    id: 'f125',
+    domain: 'd4',
+    taskRef: '4.2',
+    front: 'Why few-shot is most effective for consistent format',
+    back: 'Few-shot examples directly demonstrate the expected structure, field names, and phrasing — the model pattern-matches rather than inferring from rules. For output consistency, 2-4 representative examples outperform detailed prose format descriptions.',
+  },
+  {
+    id: 'f126',
+    domain: 'd4',
+    taskRef: '4.2',
+    front: 'Demonstrating ambiguous-case handling in few-shot examples',
+    back: 'Include at least one example that covers a difficult or edge case — inputs that could legitimately go multiple ways. Showing how to handle the hard case is more valuable than multiple examples of the easy case, because it calibrates the model\'s uncertainty boundary.',
+  },
+  {
+    id: 'f127',
+    domain: 'd4',
+    taskRef: '4.2',
+    front: 'Reducing extraction hallucination with few-shot',
+    back: 'When extracting structured fields from documents, few-shot examples that include the source passage alongside the extracted value teach the model to ground its output. If the field is absent, show a null or "not found" example to suppress fabrication.',
+  },
+  {
+    id: 'f128',
+    domain: 'd4',
+    taskRef: '4.2',
+    front: 'Optimal few-shot count: 2-4 targeted examples',
+    back: 'Provide 2-4 examples covering distinct patterns, not 10+ repetitions of the same case. More examples beyond 4-5 yield diminishing returns on format fidelity and consume context window space that could hold more of the actual input.',
+  },
+
+  // 4.3 Structured output via tool_use
+  {
+    id: 'f129',
+    domain: 'd4',
+    taskRef: '4.3',
+    front: 'tool_use + JSON schema guarantees syntax, not semantics',
+    back: 'Forcing output through a tool_use call with a JSON schema ensures the response is schema-valid JSON with no syntax errors. It does not guarantee semantically correct values — Claude may still produce wrong field values that are structurally valid.',
+  },
+  {
+    id: 'f130',
+    domain: 'd4',
+    taskRef: '4.3',
+    front: 'tool_choice: auto vs. any vs. forced',
+    back: '`tool_choice: "auto"` lets the model call a tool or respond in text. `"any"` forces a tool call but allows the model to choose which one. `{type: "tool", name: "X"}` forces a specific tool call unconditionally — use this to guarantee structured output every time.',
+  },
+  {
+    id: 'f131',
+    domain: 'd4',
+    taskRef: '4.3',
+    front: 'Optional/nullable fields to prevent fabrication',
+    back: 'Mark schema fields that may not always be present as optional (or allow null). When the model is forced to fill every field, it fabricates values for absent data. Nullable fields give Claude a legitimate "not present" path, reducing hallucination.',
+  },
+  {
+    id: 'f132',
+    domain: 'd4',
+    taskRef: '4.3',
+    front: 'enum + "other" + detail pattern for classification fields',
+    back: 'For category fields, define an enum of known values plus an `"other"` option with a companion `detail` string field. This prevents forcing the model into a wrong category while still capturing structured intent — the `detail` field explains the uncategorized case.',
+  },
+
+  // 4.4 Validation / retry / feedback loops
+  {
+    id: 'f133',
+    domain: 'd4',
+    taskRef: '4.4',
+    front: 'retry-with-error-feedback pattern',
+    back: 'When Claude returns a structurally invalid response, feed back the exact validation error in the next user turn: "Your output was invalid because: [error]. Please correct and retry." Contextual error feedback is far more effective than a bare retry with the original prompt.',
+  },
+  {
+    id: 'f134',
+    domain: 'd4',
+    taskRef: '4.4',
+    front: 'When retries are useless vs. useful',
+    back: 'Retries are useful for format/structural errors (wrong JSON shape, missing required field) where the model had the information but encoded it incorrectly. Retries are useless when the required information is simply absent from the context — the model will hallucinate or repeat the same gap.',
+  },
+  {
+    id: 'f135',
+    domain: 'd4',
+    taskRef: '4.4',
+    front: 'detected_pattern field for validation context',
+    back: 'Ask Claude to include a `detected_pattern` field explaining what pattern it identified before making a judgment. This externalizes reasoning for validation — you can check whether the pattern matches the input, catching cases where the conclusion is correct but for the wrong reason.',
+  },
+
+  // 4.5 Batch processing
+  {
+    id: 'f136',
+    domain: 'd4',
+    taskRef: '4.5',
+    front: 'Message Batches API cost and latency trade-off',
+    back: 'The Message Batches API processes requests asynchronously at approximately 50% cost savings with up to 24-hour turnaround time. It provides no latency SLA — use it only for workloads that can tolerate delayed results, such as overnight classification or bulk data enrichment.',
+  },
+  {
+    id: 'f137',
+    domain: 'd4',
+    taskRef: '4.5',
+    front: 'Batch API does not support multi-turn tool calling',
+    back: 'Each request in a batch is a single, stateless API call. Multi-turn exchanges (agentic loops with tool_use/tool_result cycles) are not supported in the Batches API. All context the model needs must be included in the single request.',
+  },
+  {
+    id: 'f138',
+    domain: 'd4',
+    taskRef: '4.5',
+    front: 'custom_id for batch request correlation',
+    back: 'Each request in a batch submission must include a `custom_id` string. When results are returned asynchronously, this id is the only way to map each result back to its source request. Use stable, deterministic ids (e.g. record primary keys) — not sequential integers that may shift on retry.',
+  },
+
+  // 4.6 Multi-instance / multi-pass review
+  {
+    id: 'f139',
+    domain: 'd4',
+    taskRef: '4.6',
+    front: 'Self-review limitation: same reasoning, same blind spots',
+    back: 'A Claude instance reviewing its own output retains its original reasoning context and tends to validate what it already produced. It will catch surface formatting errors but miss logical flaws and assumptions it made silently the first time.',
+  },
+  {
+    id: 'f140',
+    domain: 'd4',
+    taskRef: '4.6',
+    front: 'Independent instance for multi-pass review',
+    back: 'Spawn a fresh Claude instance with only the artifact under review (no generation history). Its clean context catches errors the author normalized. For codebases: run a per-file pass (local correctness) and a separate cross-file pass (API contracts, imports, type consistency).',
+  },
 ]
