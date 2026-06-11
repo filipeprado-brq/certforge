@@ -9,10 +9,11 @@ import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { getFlashcards, getQuestions, flashcardCountsByDomain, questionCountsByDomain } from './content'
+import { SCENARIOS } from './scenarios'
 
-// Per-domain minimum targets (from 05-CONTEXT.md — must track exam weights)
+// Per-domain minimum targets (from 06-CONTEXT.md — must track exam weights)
 const FC_MIN = { d1: 40, d2: 27, d3: 30, d4: 30, d5: 23 }
-const Q_MIN  = { d1: 11, d2: 7,  d3: 8,  d4: 8,  d5: 6 }
+const Q_MIN  = { d1: 32, d2: 22, d3: 24, d4: 24, d5: 18 }
 
 // ---------------------------------------------------------------------------
 // Count invariants — per-domain minimums
@@ -34,19 +35,19 @@ describe('per-domain minimum counts', () => {
     expect(flashcardCountsByDomain()['d5']).toBeGreaterThanOrEqual(FC_MIN.d5)
   })
 
-  it('question count d1 >= 11', () => {
+  it('question count d1 >= 32', () => {
     expect(questionCountsByDomain()['d1']).toBeGreaterThanOrEqual(Q_MIN.d1)
   })
-  it('question count d2 >= 7', () => {
+  it('question count d2 >= 22', () => {
     expect(questionCountsByDomain()['d2']).toBeGreaterThanOrEqual(Q_MIN.d2)
   })
-  it('question count d3 >= 8', () => {
+  it('question count d3 >= 24', () => {
     expect(questionCountsByDomain()['d3']).toBeGreaterThanOrEqual(Q_MIN.d3)
   })
-  it('question count d4 >= 8', () => {
+  it('question count d4 >= 24', () => {
     expect(questionCountsByDomain()['d4']).toBeGreaterThanOrEqual(Q_MIN.d4)
   })
-  it('question count d5 >= 6', () => {
+  it('question count d5 >= 18', () => {
     expect(questionCountsByDomain()['d5']).toBeGreaterThanOrEqual(Q_MIN.d5)
   })
 })
@@ -59,8 +60,8 @@ describe('content totals', () => {
     expect(getFlashcards().length).toBeGreaterThanOrEqual(150)
   })
 
-  it('getQuestions() returns at least 40 questions', () => {
-    expect(getQuestions().length).toBeGreaterThanOrEqual(40)
+  it('getQuestions() returns at least 120 questions', () => {
+    expect(getQuestions().length).toBeGreaterThanOrEqual(120)
   })
 
   it('official-sample questions number exactly 12', () => {
@@ -153,6 +154,30 @@ describe('getQuestions filtering', () => {
     const mas = getQuestions({ scenario: 'Multi-Agent Research System' })
     expect(mas.length).toBeGreaterThan(0)
     mas.forEach(q => expect(q.scenario).toBe('Multi-Agent Research System'))
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Scenario coverage (EXP-04) — each of the 6 scenarios has a strong pool
+// ---------------------------------------------------------------------------
+describe('scenario coverage (EXP-04)', () => {
+  it('SCENARIOS contains all 6 official scenarios', () => {
+    expect(SCENARIOS.length).toBe(6)
+  })
+  SCENARIOS.forEach(scenario => {
+    it(`scenario "${scenario}" has >= 8 tagged questions`, () => {
+      expect(getQuestions({ scenario }).length).toBeGreaterThanOrEqual(8)
+    })
+  })
+})
+
+// ---------------------------------------------------------------------------
+// Code/config snippet coverage (EXP-05)
+// ---------------------------------------------------------------------------
+describe('snippet coverage (EXP-05)', () => {
+  it('at least 15 questions have hasSnippet === true', () => {
+    const withSnippet = getQuestions().filter(q => q.hasSnippet === true)
+    expect(withSnippet.length).toBeGreaterThanOrEqual(15)
   })
 })
 
