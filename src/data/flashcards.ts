@@ -1023,4 +1023,139 @@ export const FLASHCARDS: Flashcard[] = [
     front: 'Independent instance for multi-pass review',
     back: 'Spawn a fresh Claude instance with only the artifact under review (no generation history). Its clean context catches errors the author normalized. For codebases: run a per-file pass (local correctness) and a separate cross-file pass (API contracts, imports, type consistency).',
   },
+
+  // ---------------------------------------------------------------------------
+  // D5 — Context Management & Reliability (NEW: f141–f155, taskRef 5.1–5.6)
+  // ---------------------------------------------------------------------------
+
+  // 5.1 Conversation context preservation
+  {
+    id: 'f141',
+    domain: 'd5',
+    taskRef: '5.1',
+    front: 'Progressive summarization risk: what data is lost?',
+    back: 'When compacting a long conversation by summarizing earlier turns, precise values — numbers, dates, identifiers, exact quotes — are the first casualties. Preserve them verbatim in a dedicated "case facts" block rather than trusting a prose summary to carry them.',
+  },
+  {
+    id: 'f142',
+    domain: 'd5',
+    taskRef: '5.1',
+    front: 'Lost-in-the-middle effect',
+    back: 'In long contexts, the model attends less reliably to information placed in the middle of the input than at the beginning or end. Mitigate by placing the most critical facts and instructions at the top or bottom of the context, and compacting verbose middle sections.',
+  },
+  {
+    id: 'f143',
+    domain: 'd5',
+    taskRef: '5.1',
+    front: 'Trimming verbose tool output for context preservation',
+    back: 'Raw tool responses (logs, API payloads, search results) can be orders of magnitude larger than the signal they contain. Trim or summarize them server-side or via a PostToolUse hook before they enter the context window, preserving space for more relevant turns.',
+  },
+  {
+    id: 'f144',
+    domain: 'd5',
+    taskRef: '5.1',
+    front: 'Persistent "case facts" block in system prompt',
+    back: 'For long-running sessions, maintain a structured "case facts" section in the system prompt that is updated with confirmed key details (customer id, issue type, SLA deadline). This block is never summarized away and ensures critical data survives compaction.',
+  },
+  {
+    id: 'f145',
+    domain: 'd5',
+    taskRef: '5.1',
+    front: 'Position-aware ordering for context reliability',
+    back: 'Order context elements by recency and importance, placing the most recent and critical information last (nearest to the assistant turn). Older or lower-priority background can precede it. This exploits the model\'s stronger attention at context boundaries.',
+  },
+
+  // 5.2 Escalation & ambiguity resolution
+  {
+    id: 'f146',
+    domain: 'd5',
+    taskRef: '5.2',
+    front: 'Three triggers for escalation to a human agent',
+    back: 'Escalate when: (1) the customer explicitly asks to speak with a human, (2) the situation falls outside policy scope (no defined resolution path), or (3) the conversation has made no progress after multiple attempts. All three are deterministic conditions, not sentiment judgments.',
+  },
+  {
+    id: 'f147',
+    domain: 'd5',
+    taskRef: '5.2',
+    front: 'Honoring explicit human escalation requests immediately',
+    back: 'When a customer says they want a human agent, transfer immediately — do not first attempt one more automated resolution. Delaying the transfer erodes trust and violates the principle that explicit human preferences override agent optimization.',
+  },
+  {
+    id: 'f148',
+    domain: 'd5',
+    taskRef: '5.2',
+    front: 'Sentiment and self-confidence as unreliable escalation proxies',
+    back: 'Triggering escalation on detected frustration or the model\'s own low confidence produces inconsistent thresholds — sentiment classifiers drift and self-confidence is not calibrated. Use explicit, structural triggers (request type, policy gap, iteration count) instead.',
+  },
+
+  // 5.3 Error propagation across multi-agent
+  {
+    id: 'f149',
+    domain: 'd5',
+    taskRef: '5.3',
+    front: 'Structured error context fields for multi-agent propagation',
+    back: 'When a subagent fails, its error response must carry: failure type (validation/permission/transient), what was attempted, any partial results produced, and alternative approaches. This lets the coordinator make an informed recovery decision rather than restarting blindly.',
+  },
+  {
+    id: 'f150',
+    domain: 'd5',
+    taskRef: '5.3',
+    front: 'No silent suppression, no whole-workflow termination',
+    back: 'Two failure anti-patterns: (1) swallowing an error and returning empty results as if the query succeeded — the coordinator cannot detect the gap; (2) aborting the entire workflow on a single subagent failure. Instead, propagate structured errors and let the coordinator decide scope of recovery.',
+  },
+  {
+    id: 'f151',
+    domain: 'd5',
+    taskRef: '5.3',
+    front: 'Coverage annotations in multi-agent error handling',
+    back: 'When a subagent returns partial results due to an error, annotate the coverage explicitly: "processed records 1-500; records 501-1000 failed with [error]". Without coverage annotations the coordinator cannot know how much of the task scope is missing.',
+  },
+
+  // 5.4 Large codebase exploration context
+  {
+    id: 'f152',
+    domain: 'd5',
+    taskRef: '5.4',
+    front: 'Context degradation in large codebase sessions',
+    back: 'As a session accumulates tool results from exploring a large codebase, early precise findings are replaced by vague recollections ("the pattern used in most files"). Combat this with scratchpad files that record exact findings and subagent delegation to isolate sub-problem context windows.',
+  },
+  {
+    id: 'f153',
+    domain: 'd5',
+    taskRef: '5.4',
+    front: 'Scratchpad files and /compact for large codebase context',
+    back: 'Write intermediate findings to scratchpad files on disk so they persist beyond context compaction. Use `/compact` to summarize completed exploration phases. On crash or restart, a manifest file records which files were analyzed and what was found, enabling recovery without re-scanning.',
+  },
+
+  // 5.5 Human review & confidence calibration
+  {
+    id: 'f154',
+    domain: 'd5',
+    taskRef: '5.5',
+    front: 'Why aggregate accuracy hides per-type gaps',
+    back: 'A model scoring 92% overall may score 60% on rare but high-value record types. Aggregate metrics mask these per-type disparities. Use stratified sampling — evaluate a representative slice of each record type — before deciding whether to automate a workflow.',
+  },
+  {
+    id: 'f155',
+    domain: 'd5',
+    taskRef: '5.5',
+    front: 'Field-level confidence calibration on labeled sets',
+    back: 'Calibrate field-level confidence scores against a labeled validation set for each field type. A model may be reliable on date extraction but unreliable on inferred categories. Use per-field calibration to route uncertain extractions to human review rather than silently accepting all outputs.',
+  },
+
+  // 5.6 Provenance & multi-source synthesis
+  {
+    id: 'f156',
+    domain: 'd5',
+    taskRef: '5.6',
+    front: 'Claim-source mappings must survive summarization',
+    back: 'When synthesizing multiple documents, every factual claim must carry its source attribution through summarization steps. A summary that drops citations cannot be validated later — require each synthesis step to output claim-source pairs, not just conclusions.',
+  },
+  {
+    id: 'f157',
+    domain: 'd5',
+    taskRef: '5.6',
+    front: 'Annotating conflicting statistics with attribution',
+    back: 'When two sources report different values for the same metric, do not silently choose one. Annotate with both: "Source A reports 42%; Source B reports 67%." This preserves the conflict for human review and prevents fabricating a false consensus.',
+  },
 ]
