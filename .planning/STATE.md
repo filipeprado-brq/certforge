@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Content Expansion
-status: complete
-stopped_at: None — Phase 6 complete; all plans 06-01 through 06-04 delivered.
-last_updated: "2026-06-11T17:50:00.000Z"
+status: v1.1 shipped — pushed to origin/main (github.com/filipeprado-brq/certforge)
+stopped_at: None — all phases complete.
+last_updated: "2026-06-11T18:07:13.256Z"
 last_activity: 2026-06-11
 progress:
   total_phases: 6
@@ -28,7 +28,7 @@ progress:
 Phase: 06 (question-bank-expansion) — COMPLETE
 All phases complete. v1.1 milestone delivered.
 Plan: 4 of 4 (DONE)
-Status: Complete
+Status: v1.1 shipped — pushed to origin/main (github.com/filipeprado-brq/certforge)
 Last activity: 2026-06-11
 
 ## Performance Metrics
