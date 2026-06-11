@@ -76,7 +76,11 @@ Plans:
   2. User can run scenario simulation (4 of the 6 scenarios drawn at random, questions grouped by scenario), per-domain practice (filtered to a chosen domain), timed full-exam (countdown timer with a final scaled score 100–1000 and pass/fail at 720), and free/random (N random questions with explanation after each)
   3. After any quiz, user sees a results summary with score, per-domain breakdown, and a review of missed questions
   4. User can open a history view showing past quiz attempts and their scores
-**Plans:** TBD
+**Plans:** 3 plans
+Plans:
+- [ ] 04-01-PLAN.md — Pure injected quiz engine (scaledScore/isPass/gradeAttempt/selectQuestions/timer, rng+now injected, no Math.random/Date.now) + additive quizHistory persistence, fully unit-tested vs the 04-CONTEXT acceptance hooks (TDD)
+- [ ] 04-02-PLAN.md — Port BRQ ScoreDial/DomainBars/PassChip/Timer to TSX + ModeSelect (4 modes/config) + QuizRunner (non-timed reveal+explanation vs timed defer/countdown/auto-submit, scenario banner)
+- [ ] 04-03-PLAN.md — QuizResults (timed ScoreDial+PassChip / raw %, DomainBars, missed review) + QuizFlow wiring + HistoryScreen (record+view attempts) + Quiz/History route swap + App.test Quiz/History assertion updates
 **UI hint:** yes
 
 ## Progress
@@ -86,7 +90,7 @@ Plans:
 | 1. App Shell & Persistence | 2/2 | Complete | 2026-06-10 |
 | 2. Exam Content | 3/3 | Complete   | 2026-06-10 |
 | 3. Flashcards & Spaced Repetition | 2/2 | Complete | 2026-06-10 |
-| 4. Quiz Engine & Modes | 0/0 | Not started | - |
+| 4. Quiz Engine & Modes | 0/3 | Planned | - |
 
 ## Coverage
 
@@ -102,4 +106,4 @@ Plans:
 | 4 | QUIZ-01, QUIZ-02, QUIZ-03, QUIZ-04, QUIZ-05, QUIZ-06, QUIZ-07 |
 
 ---
-*Last updated: 2026-06-10 after Phase 3 plan 03-02 execution (study loop UI complete)*
+*Last updated: 2026-06-11 after Phase 4 planning (3 plans across 3 waves)*
