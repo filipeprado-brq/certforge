@@ -14,7 +14,7 @@
 - [x] **Phase 4: Quiz Engine & Modes** - Exam-style quiz engine with all 4 modes, results, and attempt history (completed 2026-06-11)
 
 <!-- Milestone v1.1 Content Expansion -->
-- [ ] **Phase 5: Flashcard Bank Expansion** - Grow the deck to ~150 weight-proportional cards covering every task statement (1.1-5.6)
+- [x] **Phase 5: Flashcard Bank Expansion** - Grow the deck to ~150 weight-proportional cards covering every task statement (1.1-5.6) (completed 2026-06-11)
 - [ ] **Phase 6: Question Bank Expansion** - Grow the bank to ~120 weight-proportional questions with deep scenario pools, code/config snippets, and a green invariants/coverage test suite
 
 ## Phase Details
@@ -100,12 +100,12 @@ Plans:
   2. Every exam-guide task statement 1.1–5.6 is covered by at least one flashcard on its core concept (verifiable via task-statement coverage)
   3. All new cards load from the existing typed source embedded in the build (no network fetch) and appear in the SRS study session and the per-domain progress view without code changes to the study loop
   4. The flashcard-related minimums and per-domain assertions in content.test.ts are updated and green for the expanded deck
-**Plans:** 3/4 plans executed
+**Plans:** 4/4 plans executed
 Plans:
 - [x] 05-01-PLAN.md — Add optional `taskRef` to the Flashcard type; raise content.test.ts to ≥150 + new per-domain mins + add the 30-statement TASK_STATEMENTS coverage gate (RED before authoring)
 - [x] 05-02-PLAN.md — Author +27 D1 (f51-f77) and +18 D2 (f78-f95) cards with taskRefs covering all of 1.1-1.7 and 2.1-2.5
 - [x] 05-03-PLAN.md — Author +20 D3 (f96-f115) and +20 D4 (f116-f135) cards with taskRefs covering all of 3.1-3.6 and 4.1-4.6
-- [ ] 05-04-PLAN.md — Author +15 D5 (f136-f150) cards covering 5.1-5.6, cross ≥150 total, backfill taskRef gaps onto f1-f50, full suite green
+- [x] 05-04-PLAN.md — Author +17 D5 (f141-f157) cards covering all 5.1-5.6, deck reached 157 total (>=155), all 30 task statements covered, full suite green (completed 2026-06-11)
 
 ### Phase 6: Question Bank Expansion
 **Goal:** The candidate has a deeper, exam-realistic question bank — grown from ~40 to ≥120 questions — with strong per-scenario pools, code/config-snippet questions, and harder tradeoff-style distractors, with the full content test suite (new minimums + coverage/scenario assertions + preserved invariants) green.
@@ -128,7 +128,7 @@ Plans:
 | 2. Exam Content | 3/3 | Complete   | 2026-06-10 |
 | 3. Flashcards & Spaced Repetition | 2/2 | Complete | 2026-06-10 |
 | 4. Quiz Engine & Modes | 3/3 | Complete   | 2026-06-11 |
-| 5. Flashcard Bank Expansion | 3/4 | In Progress|  |
+| 5. Flashcard Bank Expansion | 4/4 | Complete   | 2026-06-11 |
 | 6. Question Bank Expansion | 0/? | Not started | - |
 
 ## Coverage
